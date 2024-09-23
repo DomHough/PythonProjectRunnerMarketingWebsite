@@ -1,0 +1,40 @@
+:root {
+    /* Color Variables */
+    --color-python-blue: #3776AB;
+    --color-python-yellow: #FFD343;
+
+    --color-primary: rgba(215,215,215,1);
+    --color-primary-hover: rgba(175,175,175,1);
+    --color-primary-active: rgba(135,135,135,1);
+
+    --color-secondary: rgba(40,40,40,1);
+    --color-secondary-hover: rgba(80,80,80,1);
+    --color-secondary-active: rgba(120,120,120,1);
+
+    --color-tertiary: var(--color-python-blue);
+    --color-background: white;
+    --text-primary-color: black;
+    --text-secondary-color: white;
+
+
+
+    /* Font Variables */
+    --font-size-small: 12px;
+    --font-size-medium: 16px;
+    --font-size-large: 24px;
+
+    /* Spacing Variables */
+    --spacing-small: 4px;
+    --spacing-medium: 8px;
+    --spacing-large: 16px;
+
+    /* Border Variables */
+    --border-radius-small: 4px;
+    --border-radius-medium: 8px;
+    --border-radius-large: 16px;
+
+    --border-width-small: 1px;
+    --border-width-medium: 2px;
+    --border-width-large: 4px;
+
+}
