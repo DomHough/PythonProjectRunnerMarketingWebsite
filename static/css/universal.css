@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    background: none;
+    box-shadow: none;
+    font-size: inherit;
+    font-style: normal;
+    font-weight: normal;
+    font-family: inherit;
+    text-decoration: none;
+    list-style: none;
+}
