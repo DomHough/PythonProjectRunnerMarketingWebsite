@@ -1,6 +1,7 @@
 :root {
     /* Color Variables */
-    --color-python-blue: #3776AB;
+    --color-python-blue: rgb(55,118,171);
+    --color-python-blue-trips: 55, 118, 171;
     --color-python-yellow: #FFD343;
 
     --color-primary: rgba(215,215,215,1);
@@ -21,20 +22,26 @@
     /* Font Variables */
     --font-size-small: 12px;
     --font-size-medium: 16px;
+    --font-size-medium-plus: 20px;
     --font-size-large: 24px;
+    --font-size-xl: 32px;
+    --font-size-xxl: 48px;
 
     /* Spacing Variables */
     --spacing-small: 4px;
     --spacing-medium: 8px;
     --spacing-large: 16px;
+    --spacing-xl: 32px;
 
     /* Border Variables */
     --border-radius-small: 4px;
     --border-radius-medium: 8px;
     --border-radius-large: 16px;
+    --border-radius-xl: 32px;
 
     --border-width-small: 1px;
     --border-width-medium: 2px;
     --border-width-large: 4px;
+    --border-width-xl: 8px;
 
 }
