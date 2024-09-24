@@ -1,0 +1,136 @@
+.above-the-fold {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.above-the-fold > .title {
+    background-color: var(--color-secondary);
+    padding: var(--spacing-large) var(--spacing-xl);
+    border-radius: 50vh;
+}
+.above-the-fold > .middle-content-container {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+
+.above-the-fold > .middle-content-container > * {
+    margin: var(--spacing-xl);
+    width: 50%;
+}
+
+.above-the-fold > .middle-content-container > .left-side-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.above-the-fold > .middle-content-container > .left-side-container > * {
+    margin: var(--spacing-large);
+}
+.above-the-fold > .middle-content-container > .left-side-container > h2 {
+    width: 50%;
+}
+
+.above-the-fold-download-button {
+    font-size: var(--font-size-large);
+    color: white;
+    background-color: var(--color-secondary);
+    padding: var(--spacing-large) var(--spacing-xl);
+    border-radius: 100vh;
+    font-weight: 800;
+    font-family: "Lato", sans-serif;
+    border: var(--border-width-xl) outset var(--color-python-blue);
+}
+
+.above-the-fold-download-button:hover {
+    background-color: var(--color-python-blue);
+    cursor: pointer;
+}
+
+.above-the-fold-download-button:active {
+    background-color: var(--color-python-blue);
+    border: var(--border-width-xl) inset var(--color-python-blue);
+}
+
+.above-the-fold h1, .above-the-fold h2  {
+    font-family: "Lato", sans-serif;
+    font-weight: 600;
+    text-align: center;
+}
+.above-the-fold h1 {
+    font-size: var(--font-size-xxl);
+}
+
+.above-the-fold h2 {
+    font-size: var(--font-size-xl);
+}
+
+.above-the-fold span {
+    font-weight: 800;
+}
+.app-img {
+    border-radius: var(--border-radius-xl);
+}
+
+.background-shape {
+    position: absolute;
+    bottom: 0;
+    background-image: linear-gradient(0deg, rgba(var(--color-python-blue-trips), 0.8), rgba(var(--color-python-blue-trips), 0));
+}
+
+.left-triangle-background {
+    left: 0;
+    clip-path: polygon(100% 100%, 0% 100%, 0% 0%, 100% 80%);
+    width: 40%;
+    height: 50%;
+    z-index: -1;
+}
+.learn-more-box-background {
+    height: 10%;
+    width: 20%;
+    background-image: linear-gradient(0deg, rgba(var(--color-python-blue-trips), 0.8), rgba(var(--color-python-blue-trips), 0.64));
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.learn-more-box-background > button {
+    font-size: var(--font-size-large);
+    color: white;
+    border: var(--border-width-large) solid white;
+    padding: var(--spacing-large);
+    border-radius: 50vh;
+    font-weight: 800;
+    font-family: "Lato", sans-serif;
+}
+
+.learn-more-box-background > button:hover {
+    background-color: white;
+    color: var(--color-python-blue);
+    cursor: pointer;
+}
+
+.right-triangle-background {
+    right: 0;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 80%);
+    width: 40%;
+    height: 50%;
+    z-index: -1;
+}
+
+/* Popular Styles */
+span.python-blue {
+    color: var(--color-python-blue);
+}
+span.python-yellow {
+    color: var(--color-python-yellow);
+}
+
+
+/* Second Page Styling */
