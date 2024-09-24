@@ -1,8 +1,8 @@
-header {
+.navbar {
     width: 100%;
+    position: absolute;
     background-color: var(--color-python-blue)
 }
-
 .navbar > ul {
     display: flex;
     flex-direction: row;
@@ -54,16 +54,17 @@ header {
     align-self: center;
     font-family: "Lato", sans-serif;
     font-weight: 800;
-    font-size: 16px;
+    font-size: var(--font-size-medium-plus);
 }
 
 .navbar-item-logo {
     background-color: var(--color-secondary);
     border-radius: 100vh;
+    padding: var(--spacing-medium) var(--spacing-large) !important;
 }
 
 .navbar-item-logo > span {
     font-family: "Lato", sans-serif;
     font-weight: 800;
-    font-size: 24px;
+    font-size: var(--font-size-large);
 }
