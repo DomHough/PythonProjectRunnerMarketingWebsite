@@ -280,3 +280,55 @@ span.python-yellow {
     paint-order: stroke fill;
 }
 
+/* Download Section Styling */
+#download {
+    display: flex;
+    flex-direction: row;
+}
+
+#download > .left-side, #download > .right-side {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#download > .left-side {
+    justify-content: flex-end;
+
+}
+#download > .right-side {
+    justify-content: flex-start;
+
+}
+
+#download .left-side-content, #download .right-side-content {
+    position: absolute;
+    border-radius: var(--border-radius-xl);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#download .left-side-content {
+    width: 25vw;
+    height: 25vw;
+    background-color: rgba(var(--color-python-blue-trips), 0.8);
+    right: calc(0px - (var(--border-radius-xl)/2));
+    z-index: 2;
+}
+#download .right-side-content {
+    position: absolute;
+    width: 20vw;
+    height: 20vw;
+    background-color: rgba(var(--color-python-yellow-trips), 0.8);
+    left: calc(0px - (var(--border-radius-xl)/2));
+    z-index: 1;
+}
+
+#download h1 {
+    font-size: var(--font-size-xl);
+    color: white;
+    font-weight: 800;
+}
