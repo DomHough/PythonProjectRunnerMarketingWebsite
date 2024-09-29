@@ -197,7 +197,7 @@ span.python-yellow {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-python-blue);
+    background-color: rgba(var(--color-python-blue-trips), 0.8);
     width: 20vw;
     height: 20vw;
     border-radius: var(--border-radius-large);
@@ -312,6 +312,8 @@ span.python-yellow {
 }
 
 #download .left-side-content {
+    display: flex;
+    flex-direction: column;
     width: 25vw;
     height: 25vw;
     background-color: rgba(var(--color-python-blue-trips), 0.8);
@@ -327,8 +329,34 @@ span.python-yellow {
     z-index: 1;
 }
 
+#download > .left-side > .left-side-content > * {
+    margin: var(--spacing-small);
+}
 #download h1 {
-    font-size: var(--font-size-xl);
+    font-size: 4vw;
     color: white;
     font-weight: 800;
+}
+
+#download button {
+    border: var(--border-width-large) solid white;
+    width: 80%;
+    height: 50px;
+    border-radius: 100vh;
+    color: white;
+    font-size: 1vw;
+    font-weight: 800;
+    font-family: "Lato", sans-serif;
+}
+
+#download button:hover {
+    background-color: white;
+    cursor: pointer;
+    color: var(--color-python-blue);
+}
+
+#download span {
+    font-size: 20vw;
+    color: white;
+    text-shadow: black 8px 16px;
 }
