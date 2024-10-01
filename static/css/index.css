@@ -338,17 +338,6 @@ span.python-yellow {
     font-weight: 800;
 }
 
-#download button {
-    border: var(--border-width-large) solid white;
-    width: 80%;
-    height: 50px;
-    border-radius: 100vh;
-    color: white;
-    font-size: 1vw;
-    font-weight: 800;
-    font-family: "Lato", sans-serif;
-}
-
 #download button:hover {
     background-color: white;
     cursor: pointer;
@@ -359,4 +348,51 @@ span.python-yellow {
     font-size: 20vw;
     color: white;
     text-shadow: black 8px 16px;
+}
+
+.download-links {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+}
+
+.download-links > button {
+    height: 50px;
+    border-radius: 50vh 0 0 50vh;
+    padding: 0 var(--spacing-small);
+    border: var(--border-width-large) solid white;
+    color: white;
+    font-size: 1vw;
+    font-weight: 800;
+    font-family: "Lato", sans-serif;
+    flex-grow: 1;
+}
+
+.download-links > button:active {
+    border: var(--border-width-large) inset white;
+}
+
+.download-links > button:active + select {
+    border: var(--border-width-large) inset white;
+    border-left: none;
+
+}
+
+.download-links > button:not(:only-child) {
+    border-right: none;
+}
+
+.download-links > button:only-child {
+    border-radius: 50vh !important;
+}
+
+.download-links > select {
+    text-align: center;
+    width: 25%;
+    height: 50px;
+    border-radius: 0 50vh 50vh 0;
+    border: var(--border-width-large) solid white;
+    border-left: none;
+    color: var(--color-python-blue);
+    background-color: white;
 }
