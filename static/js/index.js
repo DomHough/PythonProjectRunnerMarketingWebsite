@@ -1,0 +1,85 @@
+// create onload function
+window.onload = function() {
+    osSpecificDownloadButton()
+}
+
+windows_downloads_template = `
+<div class="download-links">
+  <button>Download For Windows</button>
+  <select onchange="selected_os(this)">
+    <option value="1">x86</option>
+    <option value="2" selected hidden>x64</option>
+  </select>
+</div>
+`
+
+mac_downloads_template = `
+<div class="download-links">
+  <button>Download For Mac</button>
+  <select onchange="selected_os(this)">
+    <option value="1">Intel</option>
+    <option value="2" selected hidden>Arm</option>
+  </select>
+</div>
+`
+
+linux_downloads_template = `
+<div class="download-links">
+  <button>Download For Linux</button>
+</div>
+`
+function osSpecificDownloadButton() {
+    os = getOS();
+    console.log(os)
+    if (os === 'windows') {
+        document.getElementById('download-link-container').innerHTML = '<h1>Download</h1>' + windows_downloads_template;
+    }
+    else if (os === 'mac os') {
+        document.getElementById('download-link-container').innerHTML = '<h1>Download</h1>' + mac_downloads_template;
+    }
+    else if (os === 'linux') {
+        document.getElementById('download-link-container').innerHTML = '<h1>Download</h1>' + linux_downloads_template;
+    }
+    else {
+        html = '<h1>Download</h1>' + windows_downloads_template + mac_downloads_template + linux_downloads_template;
+        document.getElementById('download-link-container').innerHTML = html;
+    }
+
+}
+
+function getOS() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    if (userAgent.includes('windows')) {
+        return 'windows';
+    }
+    else if (userAgent.includes('mac os')) {
+        return 'mac os'
+    }
+    else if (userAgent.includes('linux')) {
+        return 'linux'
+    }
+    else if (userAgent.includes('android')) {
+        return "android";
+    }
+    else if (userAgent.includes("iphone") || userAgent.includes("ipad")) {
+        return "ios";
+    }
+    else {
+        return 'unknown'
+    }
+}
+
+function selected_os(element) {
+    value = element.value;
+    // loop through list of options and hide selected value
+    Array.from(element.children).forEach(option => {
+        if (option.value == value) {
+            // set to hidden
+            console.log('hiding')
+            option.hidden = true;
+        }
+        else {
+            option.hidden = false;
+        }
+    })
+}
