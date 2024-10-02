@@ -5,7 +5,7 @@ test('has title', async ({ page }) => {
   await page.goto('index.html');
 
   // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/Title/);
+  await expect(page).toHaveTitle(/PyRun | Dashboard/);
 });
 
 // test('get started link', async ({ page }) => {
