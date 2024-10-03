@@ -1,7 +1,8 @@
 const {test, expect} = require("@playwright/test");
 
 test('pressing learn more button takes you to the learn more page', async ({ page }) => {
+  const normaliseURL = (url) => new URL(url).toString()
   await page.goto('index.html');
   await page.click('a:has-text("Learn More")');
-  await expect(page.url()).toBe(`file:///${process.cwd().replace(/\\/g, '/')}/index.html#features`);
+  await expect(normaliseURL(page.url())).toBe(normaliseURL(`file:///${process.cwd()}/index.html#features`));
 });
