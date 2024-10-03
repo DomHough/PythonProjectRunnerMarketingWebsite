@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 .above-the-fold {
     display: flex;
     flex-direction: column;
@@ -103,7 +107,7 @@
 }
 
 
-.learn-more-box-background > button {
+.learn-more-box-background > a {
     font-size: var(--font-size-large);
     color: white;
     border: var(--border-width-large) solid white;
@@ -113,7 +117,7 @@
     font-family: "Lato", sans-serif;
 }
 
-.learn-more-box-background > button:hover {
+.learn-more-box-background > a:hover {
     background-color: white;
     color: var(--color-python-blue);
     cursor: pointer;
@@ -136,10 +140,11 @@ span.python-yellow {
 
 /* Feature Section Styling */
 #features {
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    padding-bottom: var(--spacing-large);
 }
 
 #features > .compatability-container h2 {
