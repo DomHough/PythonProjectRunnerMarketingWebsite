@@ -7,8 +7,9 @@ windows_downloads_template = `
 <div class="download-links">
   <button>Download For Windows</button>
   <select onchange="selected_os(this)">
-    <option value="1">x86</option>
-    <option value="2" selected hidden>x64</option>
+    <option value="1" selected hidden>x64</option>
+    <option value="2">x86</option>
+    
   </select>
 </div>
 `
