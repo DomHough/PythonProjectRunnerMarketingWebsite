@@ -24,36 +24,32 @@
   <body>
     <header>
       <nav class="navbar">
-        <ul>
-          <!-- Left Navbar -->
-          <li class="navbar-section navbar-left">
-            <ul>
-              <!--<li class="navbar-item"><a href="/index.html"><img src="https://picsum.photos/400/100"></a></li>-->
-              <li class="navbar-item"><a class="navbar-item-logo" href="/index.html"><span class="python-blue">Py</span><span class="python-yellow">Run</span></a></li>
-            </ul>
-          </li>
-          <!-- Center Navbar -->
-          <li class="navbar-section navbar-center">
-            <ul>
-              <li class="navbar-item"><a href="/features">Features</a></li>
-              <li class="navbar-item"><a href="/documentation">Documentation</a></li>
-              <li class="navbar-item"><a href="https://github.com/DomHough/PythonProjectRunner/releases">Download</a></li>
-            </ul>
-          </li>
-          <!-- Right Navbar -->
-          <li class="navbar-section navbar-right">
-            <ul>
-              <li class="navbar-item"><a href="/features">Dev Web</a></li>
-              <li class="navbar-item"><a href="/documentation">Socials</a></li>
-              <li class="navbar-item"><a href="https://github.com/DomHough/PythonProjectRunner/releases">Contact Us</a></li>
-            </ul>
-          </li>
-        </ul>
+        <div class="navbar-controls">
+          <div class="logo-section">
+            <a class="logo"><span class="python-blue">Py</span><span class="python-yellow">Run</span></a>
+          </div>
+          <div class="hamburger-section">
+            <button onclick="toggleNavbarDropdown()">&#9776;</button>
+          </div>
+        </div>
+        <div class="navbar-links">
+          <div class="navbar-center">
+            <a href="/features">Features</a>
+            <a href="/documentation">Documentation</a>
+            <a href="https://github.com/DomHough/PythonProjectRunner/releases">Download</a>
+          </div>
+          <div class="navbar-right">
+            <a href="/features">Dev Web</a>
+            <a href="/documentation">Socials</a>
+            <a href="https://github.com/DomHough/PythonProjectRunner/releases">Contact Us</a>
+          </div>
+        </div>
       </nav>
     </header>
+
     <main>
       <section id="hero">
-        <h1 class="title"><span class="python-blue">Py</span><span class="python-yellow">Run</span></h1>
+        <h1 class="logo"><span class="python-blue">Py</span><span class="python-yellow">Run</span></h1>
         <div class="middle-content-container">
           <div class="left-side-container">
             <h2>A Better Way To <span class="python-yellow">Run</span> And <span class="python-yellow">Manage</span> Python Applications</h2>
