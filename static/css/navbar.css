@@ -1,75 +1,86 @@
 .navbar {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
     width: 100%;
-    position: absolute;
     background-color: var(--color-python-blue);
-    height: 50px;
     z-index: 1000;
     overflow: clip;
 }
 
-.navbar > ul {
-    display: flex;
-    flex-direction: row;
-    height: 100%;
+.navbar .logo {
+    padding: var(--spacing-medium) var(--spacing-large);
 }
 
-.navbar-section {
+.navbar-controls {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+}
+
+.navbar-controls > * {
     width: 100%;
 }
 
-.navbar-section > ul {
+.logo-section {
     display: flex;
     flex-direction: row;
-    height: 100%;
-}
-
-.navbar-left > ul {
     justify-content: flex-start;
+    align-items: center;
 }
 
-.navbar-center > ul {
-    justify-content: center;
-}
-.navbar-right > ul {
-    justify-content: flex-end;
-}
-
-.navbar-item {
+.hamburger-section {
     display: flex;
-    margin: var(--spacing-medium);
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
 }
 
-.navbar-item > a >  img {
-    height: 50px;
-    border-radius: var(--border-radius-medium);
+
+.navbar-links {
+    display: none;
+    flex-direction: column;
+    height: calc(100dvh - 50px);
 }
 
-.navbar-item > a {
-    text-align: center;
-    color: var(--text-secondary-color);
-    width: fit-content;
-    vertical-align: middle;
+.navbar-links > * {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.navbar-item > a:not(:has(img)) {
-    padding: var(--spacing-medium);
+.navbar a {
+    margin: 8px;
 }
 
-.navbar-item > * {
-    align-self: center;
-    font-family: "Lato", sans-serif;
-    font-weight: 800;
-    font-size: 1rem;
+.navbar button {
+    margin: 8px;
 }
 
-.navbar-item-logo {
-    background-color: var(--color-secondary);
-    border-radius: 100vh;
-    padding: var(--spacing-medium) var(--spacing-large) !important;
-}
+@media only screen and (min-width: 768px) {
+    .navbar {
+        flex-direction: row !important;
+    }
+    .navbar .hamburger-section {
+        display: none;
+    }
 
-.navbar-item-logo > span {
-    font-family: "Lato", sans-serif;
-    font-weight: 800;
-    font-size: 1rem;
+    .navbar-controls {
+        flex: 0 0 33.33%;
+    }
+    .navbar-links {
+        display: flex !important;
+        flex-direction: row;
+        flex: 0 0 66.66%;
+        height: 50px;
+    }
+    .navbar-links > * {
+        flex-direction: row;
+    }
+    .navbar-right {
+        justify-content: flex-end;
+    }
 }

@@ -10,6 +10,12 @@ html {
     }
 }
 
+.logo {
+    background-color: var(--color-secondary);
+    padding: var(--spacing-large) var(--spacing-xl);
+    border-radius: 50vh;
+}
+
 body {
     width: 100%;
 }
@@ -29,12 +35,6 @@ main {
     background-attachment: fixed;
     background-size: cover;
     background-position: right;
-}
-
-#hero > .title {
-    background-color: var(--color-secondary);
-    padding: var(--spacing-large) var(--spacing-xl);
-    border-radius: 50vh;
 }
 
 #hero > .middle-content-container {
@@ -130,6 +130,7 @@ span.python-yellow {
     flex-direction: column;
     align-items: center;
     padding-bottom: var(--spacing-large);
+    scroll-margin-top: 50px;
 }
 
 #features > .compatability-container h2 {

@@ -3,6 +3,27 @@ window.onload = function() {
     osSpecificDownloadButton()
 }
 
+function toggleNavbarDropdown() {
+    console.log('test')
+    const dropdown = document.querySelector('.navbar-links')
+    if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+        dropdown.style.display = 'flex';
+    }
+    else {
+        dropdown.style.display = 'none';
+    }
+}
+
+window.addEventListener('resize', function() {
+    const dropdown = document.querySelector('.navbar-links')
+    if (window.innerWidth > 768) {
+        dropdown.style.display = '';
+    }
+})
+
+
+
+
 windows_downloads_template = `
 <div class="download-links">
   <button>Download For Windows</button>
