@@ -8,8 +8,9 @@
     box-shadow: none;
     font-size: inherit;
     font-style: normal;
-    font-weight: normal;
-    font-family: inherit;
+    font-weight: 800;
+    font-family: "Lato", sans-serif;
     text-decoration: none;
     list-style: none;
+    color: white;
 }
