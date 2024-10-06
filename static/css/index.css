@@ -129,43 +129,28 @@ span.python-yellow {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-bottom: var(--spacing-large);
     scroll-margin-top: 50px;
+    padding: var(--spacing-large) 0;
 }
 
-#features > .compatability-container h2 {
-    font-size: var(--font-size-large);
-}
-
-#features > .compatability-container {
+#features > .features-title-container {
     display: flex;
-    flex-direction: row;
-    background-color: rgba(var(--color-python-blue-trips), 0.8);
-    width: 100%;
-}
-
-#features > .compatability-container > div {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    margin: var(--spacing-large);
-}
-
-#features > .compatability-container > div > div {
-    display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#features > .compatability-container > div > div > * {
-    margin: var(--spacing-small);
+#features > .features-title-container > * {
+    color: black;
 }
-#features > .compatability-fade {
-    width: 100%;
-    height: 100px;
-    background-image: linear-gradient(180deg, rgba(var(--color-python-blue-trips), 0.8), rgba(var(--color-python-blue-trips), 0));
+
+#features > .features-title-container > h1 {
+    font-size: 3rem;
+}
+
+#features > .features-title-container > h2 {
+    font-size: 2rem;
+    text-align: center;
 }
 
 #features .language-icon {
@@ -175,9 +160,12 @@ span.python-yellow {
 
 #features > .grid-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    grid-template-rows: repeat(2, 1fr);   /* 2 rows */
-    grid-gap: var(--spacing-medium);
+    grid-template-columns: repeat(6, 1fr); /* 4 columns */
+    grid-template-rows: repeat(1, 1fr);   /* 2 rows */
+    grid-gap: var(--spacing-large);
+    overflow-x: auto;
+    width: 100%;
+    padding: 16px;
 }
 
 #features > .grid-container > .box {
@@ -185,12 +173,14 @@ span.python-yellow {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgba(var(--color-python-blue-trips), 0.8);
-    width: 20vw;
-    height: 20vw;
-    border-radius: var(--border-radius-large);
+    background-color: var(--color-python-blue);
+    border-radius: var(--border-radius-medium);
     overflow: clip;
     position: relative;
+    padding: 8px;
+    box-shadow: 0px 0px 8px 4px black;
+    width: 250px;
+    height: 250px;
 }
 
 #features > .grid-container > .box > * {
@@ -203,18 +193,8 @@ span.python-yellow {
     border-radius: var(--border-radius-large);
 }
 
-
-#features > .grid-container > .title-box {
-    grid-column: span 2;
-    width: calc(20vw * 2 + var(--spacing-medium));
-}
-
 #features > .grid-container > .box > h1 {
-    font-size: 2.5vw;
-    text-align: center;
-}
-#features > .grid-container > .box > h2 {
-    font-size: 1vw;
+    font-size: 2rem;
     text-align: center;
 }
 
@@ -228,14 +208,14 @@ span.python-yellow {
 }
 
 #features > .grid-container > .box > span {
-    font-size: 10vw;
+    font-size: 8rem;
     text-shadow: black 8px 16px;
 }
 
 
 .work-in-progress-stripe {
     position: absolute;
-    width: calc(20vw * sqrt(2));
+    width: calc(250px * sqrt(2));
     border-radius: 100px;
     height: 40px;
     background:  repeating-linear-gradient(45deg, black, black 2%, var(--color-python-yellow) 2%, var(--color-python-yellow) 4%);
@@ -248,7 +228,7 @@ span.python-yellow {
 
 .stripe-2 {
     transform: rotate(45deg);
-    box-shadow: 8px 8px 8px;
+    box-shadow: black 8px 8px 8px;
 }
 
 .work-in-progress-text {
@@ -259,6 +239,19 @@ span.python-yellow {
     -webkit-text-stroke: 4px white;
     color: black !important;
     paint-order: stroke fill;
+}
+
+
+
+@media only screen and (min-width: 768px) {
+    #features > .features-title-container {
+        width: 750px;
+    }
+    #features > .grid-container {
+        width: max-content;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+    }
 }
 
 /* Download Section Styling */
