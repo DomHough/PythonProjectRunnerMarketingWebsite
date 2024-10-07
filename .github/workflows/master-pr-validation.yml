@@ -1,0 +1,17 @@
+name: Master PR Validation
+
+on:
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  validate-pr-branch:
+    name: Validate PR Branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if PR from release/* branch
+        if : ${{ !startsWith(github.head_ref, 'release/') }}
+        run: |
+          echo "This PR is not from release/* branch. Please create a PR from release/* branch."
+          exit 1;
