@@ -131,7 +131,6 @@ span.python-yellow {
 
 /* Feature Section Styling */
 #features {
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -148,15 +147,6 @@ span.python-yellow {
 
 #features > .features-title-container > * {
     color: black;
-}
-
-#features > .features-title-container > h1 {
-    font-size: 3rem;
-}
-
-#features > .features-title-container > h2 {
-    font-size: 2rem;
-    text-align: center;
 }
 
 #features .language-icon {
@@ -197,11 +187,6 @@ span.python-yellow {
     width: 80%;
     height: 80%;
     border-radius: var(--border-radius-large);
-}
-
-#features > .grid-container > .box > h1 {
-    font-size: 2rem;
-    text-align: center;
 }
 
 /* Icon Styling */
@@ -259,61 +244,65 @@ span.python-yellow {
     }
 }
 
+
 /* Download Section Styling */
 #download {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-primary);
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-large) 0;
+}
+
+#download > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--border-radius-xl)
+}
+
+#download > .download-links-container {
+    width: 350px;
+    height: 350px;
+    background-color: rgba(var(--color-python-blue-trips), 0.8);
+    z-index: 2;
+    margin-bottom: -12.5px;
+}
+
+#download > .download-links-container > * {
+    margin: var(--spacing-medium);
+}
+
+#download > .download-icon-container {
+    width: 300px;
+    height: 300px;
+    background-color: rgba(var(--color-python-yellow-trips), 0.8);
+    z-index: 1;
+    margin-top: -12.5px;
+}
+
+#download > .download-icon-container > span {
+    font-size: 16rem;
+    text-shadow: black 8px 16px;
+}
+
+
+
+#download .download-links {
+    width: 80%;
     display: flex;
     flex-direction: row;
 }
 
-#download > .left-side, #download > .right-side {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-#download > .left-side {
-    justify-content: flex-end;
-
-}
-#download > .right-side {
-    justify-content: flex-start;
-
-}
-
-#download .left-side-content, #download .right-side-content {
-    position: absolute;
-    border-radius: var(--border-radius-xl);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#download .left-side-content {
-    display: flex;
-    flex-direction: column;
-    width: 25vw;
-    height: 25vw;
-    background-color: rgba(var(--color-python-blue-trips), 0.8);
-    right: calc(0px - (var(--border-radius-xl)/2));
-    z-index: 2;
-}
-#download .right-side-content {
-    position: absolute;
-    width: 20vw;
-    height: 20vw;
-    background-color: rgba(var(--color-python-yellow-trips), 0.8);
-    left: calc(0px - (var(--border-radius-xl)/2));
-    z-index: 1;
-}
-
-#download > .left-side > .left-side-content > * {
-    margin: var(--spacing-small);
-}
-#download h1 {
-    font-size: 4vw;
-    font-weight: 800;
+#download button {
+    font-size: 1rem;
+    height: 50px;
+    border-radius: 50vh 0 0 50vh;
+    padding: 0 var(--spacing-small);
+    border: var(--border-width-large) solid white;
+    flex-grow: 1;
 }
 
 #download button:hover {
@@ -322,41 +311,21 @@ span.python-yellow {
     color: var(--color-python-blue);
 }
 
-#download span {
-    font-size: 20vw;
-    text-shadow: black 8px 16px;
-}
-
-.download-links {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-}
-
-.download-links > button {
-    height: 50px;
-    border-radius: 50vh 0 0 50vh;
-    padding: 0 var(--spacing-small);
-    border: var(--border-width-large) solid white;
-    font-size: 1vw;
-    flex-grow: 1;
-}
-
-.download-links > button:active {
+#download button:active {
     border: var(--border-width-large) inset white;
 }
 
-.download-links > button:active + select {
+#download button:active + select {
     border: var(--border-width-large) inset white;
     border-left: none;
 
 }
 
-.download-links > button:not(:only-child) {
+#download button:not(:only-child) {
     border-right: none;
 }
 
-.download-links > button:only-child {
+#download .download-links > button:only-child {
     border-radius: 50vh !important;
 }
 
@@ -369,4 +338,23 @@ span.python-yellow {
     border-left: none;
     color: var(--color-python-blue);
     background-color: white;
+}
+
+@media only screen and (min-width: 768px) {
+    #download {
+        flex-direction: row;
+    }
+
+    #download > .download-links-container {
+        width: 400px;
+        height: 400px;
+        margin-bottom: 0;
+        margin-right: -12.5px;
+    }
+    #download > .download-icon-container {
+        width: 350px;
+        height: 350px;
+        margin-top: 0;
+        margin-left: -12.5px;
+    }
 }
