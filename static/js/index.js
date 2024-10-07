@@ -54,17 +54,14 @@ function osSpecificDownloadButton() {
     os = getOS();
     console.log(os)
     if (os === 'windows') {
-        document.getElementById('download-link-container').innerHTML = '<h1>Download</h1>' + windows_downloads_template;
-    }
-    else if (os === 'mac os') {
-        document.getElementById('download-link-container').innerHTML = '<h1>Download</h1>' + mac_downloads_template;
-    }
-    else if (os === 'linux') {
-        document.getElementById('download-link-container').innerHTML = '<h1>Download</h1>' + linux_downloads_template;
-    }
-    else {
-        html = '<h1>Download</h1>' + windows_downloads_template + mac_downloads_template + linux_downloads_template;
-        document.getElementById('download-link-container').innerHTML = html;
+        document.querySelector('.download-links-container').innerHTML += windows_downloads_template;
+    } else if (os === 'mac os') {
+        document.querySelector('.download-links-container').innerHTML += mac_downloads_template;
+    } else if (os === 'linux') {
+        document.querySelector('.download-links-container').innerHTML = linux_downloads_template;
+    } else {
+        html = windows_downloads_template + mac_downloads_template + linux_downloads_template;
+        document.querySelector('.download-links-container').innerHTML += html;
     }
 
 }
