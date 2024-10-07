@@ -4,7 +4,7 @@ test('windows has windows download link', async ({ browser }) => {
   const page = await context.newPage();
   await page.goto('index.html');
 
-  const downloadLinkContainer = await page.locator('#download-link-container');
+  const downloadLinkContainer = await page.locator('.download-links-container');
   await expect(downloadLinkContainer).toBeVisible();
 
   const downloadLinks = await downloadLinkContainer.locator('div');
@@ -30,8 +30,7 @@ test('linux has linux download link', async ({ browser }) => {
   const page = await context.newPage();
   await page.goto('index.html');
 
-  const downloadLinkContainer = await page.locator('#download-link-container');
-  await expect(downloadLinkContainer).toBeVisible();
+  const downloadLinkContainer = await page.locator('.download-links-container');await expect(downloadLinkContainer).toBeVisible();
 
   const downloadLinks = await downloadLinkContainer.locator('div');
   await expect(downloadLinks).toHaveCount(1);
@@ -46,7 +45,7 @@ test('mac has mac download link', async ({ browser }) => {
   const page = await context.newPage();
   await page.goto('index.html');
 
-  const downloadLinkContainer = await page.locator('#download-link-container');
+  const downloadLinkContainer = await page.locator('.download-links-container');
   await expect(downloadLinkContainer).toBeVisible();
 
   const downloadLinks = await downloadLinkContainer.locator('div');
@@ -73,8 +72,8 @@ test('unknown has all downlaod links', async ({ browser }) => {
   const page = await context.newPage();
   await page.goto('index.html');
 
-  // get '#download-link-container'
-  const downloadLinkContainer = await page.locator('#download-link-container');
+  // get '.download-links-container'
+  const downloadLinkContainer = await page.locator('.download-links-container');
   await expect(downloadLinkContainer).toBeVisible();
   // get all download links
   const downloadLinks = await downloadLinkContainer.locator('div');
