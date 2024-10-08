@@ -25,6 +25,11 @@ h3 {
     font-size: 1rem;
     text-align: center;
 }
+h4 {
+    font-size: 1rem;
+    text-align: left;
+    font-weight: 600;
+}
 
 .logo {
     background-color: var(--color-secondary);
@@ -356,5 +361,112 @@ span.python-yellow {
         height: 350px;
         margin-top: 0;
         margin-left: -12.5px;
+    }
+}
+
+
+
+#faq {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-large) 0;
+}
+
+#faq * {
+    color: black;
+    display: flex;
+    flex-direction: column;
+}
+
+#faq .faq-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#faq .faq-content > * {
+    margin: var(--spacing-large);
+}
+
+#faq .faq-questions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#faq .faq-questions > * {
+    margin: var(--spacing-medium);
+}
+
+#faq .faq-question {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+#faq .faq-question h3 {
+    text-align: left;
+}
+
+#faq hr {
+    width: 80%;
+    border: 1px solid var(--color-python-blue)
+}
+
+#faq .faq-email {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#faq form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#faq form > * {
+    margin: var(--spacing-small);
+}
+
+#faq .input-container {
+    width: 100%;
+}
+#faq input[type="email"] {
+    width: 100%;
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius-small);
+    padding: var(--spacing-small);
+    font-weight: 600;
+}
+
+#faq input[type="submit"] {
+    width: 50%;
+    border: 2px solid var(--color-python-blue);
+    border-radius: var(--border-radius-small);
+    padding: var(--spacing-small);
+    background-color: var(--color-python-blue);
+    color: white;
+}
+
+#faq textarea {
+    width: 100%;
+    border: 2px solid var(--color-primary);
+    font-weight: 600;
+    resize: none;
+}
+
+
+@media only screen and (min-width: 768px) {
+    #faq .faq-content {
+        width: 75%;
+        min-width: 750px;
+        flex-direction: row;
+    }
+
+    #faq .faq-content > * {
+        width: 100%;
     }
 }
