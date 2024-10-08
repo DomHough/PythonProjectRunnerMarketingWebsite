@@ -1,0 +1,35 @@
+name: Deploy To AWS S3
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to deploy'
+        required: true
+        default: 'main'
+
+jobs:
+  deploy:
+    name: Deploy to AWS S3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: S3 Deploy
+        uses: Reggionick/s3-deploy@v4.0.0
+        with:
+          folder: .false
+          bucket: ${{ secrets.AWS_S3_BUCKET_NAME }}
+          access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret_access_key: ${{ secrets.AWS_SECRET_KEY }}
+          region: ${{ secrets.AWS_REGION }}
+          delete-removed: true
+          exclude: |
+            .git/*
+            .github/*
+            .gitignore
+            README.md
+            package.json
+            package-lock.json
+            playwright.config.ts
+            test/*
