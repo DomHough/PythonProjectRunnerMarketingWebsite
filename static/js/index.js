@@ -58,7 +58,7 @@ function osSpecificDownloadButton() {
     } else if (os === 'mac os') {
         document.querySelector('.download-links-container').innerHTML += mac_downloads_template;
     } else if (os === 'linux') {
-        document.querySelector('.download-links-container').innerHTML = linux_downloads_template;
+        document.querySelector('.download-links-container').innerHTML += linux_downloads_template;
     } else {
         html = windows_downloads_template + mac_downloads_template + linux_downloads_template;
         document.querySelector('.download-links-container').innerHTML += html;
