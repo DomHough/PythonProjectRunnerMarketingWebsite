@@ -12,6 +12,9 @@ jobs:
   deploy:
     name: Deploy to AWS S3
     runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -20,9 +23,7 @@ jobs:
         with:
           folder: .
           bucket: ${{ secrets.AWS_S3_BUCKET_NAME }}
-          access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          secret_access_key: ${{ secrets.AWS_SECRET_KEY }}
-          region: ${{ secrets.AWS_REGION }}
+          bucket-region: ${{ secrets.AWS_REGION }}
           delete-removed: true
           exclude: |
             .git/*
