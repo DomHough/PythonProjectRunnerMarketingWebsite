@@ -3,10 +3,13 @@ name: Deploy To AWS S3
 on:
   workflow_dispatch:
     inputs:
-      branch:
-        description: 'Branch to deploy'
+      environment:
+        description: 'Select the environment to deploy to'
         required: true
-        default: 'main'
+        default: 'dev'
+        options:
+          - dev
+          - prod
 
 jobs:
   deploy:
@@ -15,6 +18,7 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+      S3_BUCKET_NAME: ${{ github.event.inputs.environment == 'dev' && secrets.AWS_S3_DEV_BUCKET_NAME || secrets.AWS_S3_PROD_BUCKET_NAME }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
