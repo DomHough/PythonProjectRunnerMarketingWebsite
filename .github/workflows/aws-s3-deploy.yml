@@ -25,12 +25,3 @@ jobs:
           bucket: ${{ secrets.AWS_S3_BUCKET_NAME }}
           bucket-region: ${{ secrets.AWS_REGION }}
           delete-removed: true
-          exclude: |
-            .git/*
-            .github/*
-            .gitignore
-            README.md
-            package.json
-            package-lock.json
-            playwright.config.ts
-            test/*
