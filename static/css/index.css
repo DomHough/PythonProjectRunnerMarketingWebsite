@@ -333,16 +333,40 @@ span.python-yellow {
     border-radius: 50vh !important;
 }
 
-.download-links > select {
-    text-align: center;
+.download-links > .select-wrapper {
+    position: relative;
     width: 25%;
     height: 50px;
+}
+.download-links > .select-wrapper:after {
+    right: 0.5rem;
+    position: absolute;
+    content: '\25BC';
+    font-size: 0.5rem;
+    pointer-events: none;
+    color: black;
+    top: 50%;
+    transform: translateY(-50%);
+
+}
+
+.download-links > .select-wrapper > select {
+    position: relative;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-align: center;
+    width: 100%;
+    height: 100%;
     border-radius: 0 50vh 50vh 0;
     border: var(--border-width-large) solid white;
     border-left: none;
     color: var(--color-python-blue);
     background-color: white;
+    text-align-last: center;
 }
+
+
 
 @media only screen and (min-width: 768px) {
     #download {
@@ -438,7 +462,7 @@ span.python-yellow {
     border: 2px solid var(--color-primary);
     border-radius: var(--border-radius-small);
     padding: var(--spacing-small);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 #faq input[type="submit"] {
@@ -448,12 +472,13 @@ span.python-yellow {
     padding: var(--spacing-small);
     background-color: var(--color-python-blue);
     color: white;
+    align-items: center;
 }
 
 #faq textarea {
     width: 100%;
     border: 2px solid var(--color-primary);
-    font-weight: 600;
+    font-weight: 700;
     resize: none;
 }
 
