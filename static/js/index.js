@@ -27,21 +27,24 @@ window.addEventListener('resize', function() {
 windows_downloads_template = `
 <div class="download-links">
   <button>Download For Windows</button>
-  <select onchange="selected_os(this)">
-    <option value="1" selected hidden>x64</option>
-    <option value="2">x86</option>
-    
-  </select>
+  <div class="select-wrapper">
+      <select onchange="selected_os(this)">
+        <option value="1" selected hidden>x64</option>
+        <option value="2">x86</option>
+      </select>
+  </div>
 </div>
 `
 
 mac_downloads_template = `
 <div class="download-links">
   <button>Download For Mac</button>
-  <select onchange="selected_os(this)">
-    <option value="1">Intel</option>
-    <option value="2" selected hidden>Arm</option>
-  </select>
+  <div class="select-wrapper">
+      <select onchange="selected_os(this)">
+        <option value="1">Intel</option>
+        <option value="2" selected hidden>Arm</option>
+      </select>
+  </div>
 </div>
 `
 
