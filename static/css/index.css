@@ -319,7 +319,7 @@ span.python-yellow {
     border: var(--border-width-large) inset white;
 }
 
-#download button:active + select {
+#download button:active + div > select {
     border: var(--border-width-large) inset white;
     border-left: none;
 
