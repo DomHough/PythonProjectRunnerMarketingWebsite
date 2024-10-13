@@ -7,7 +7,7 @@
 }
 
 .footer .logo-section > a {
-    margin: 8px;
+    margin: var(--spacing-medium) var(--spacing-large);
 }
 
 .footer .social-media-section {
