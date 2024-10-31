@@ -1,0 +1,17 @@
+.navbar {
+    position: relative !important;
+}
+
+html {
+    height: 100dvh;
+}
+body {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex-grow: 1;
+}
