@@ -31,12 +31,6 @@ h4 {
     font-weight: 400;
 }
 
-.logo {
-    background-color: var(--color-secondary);
-    padding: var(--spacing-large) var(--spacing-xl);
-    border-radius: 50vh;
-}
-
 body {
     width: 100%;
 }
