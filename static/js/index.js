@@ -4,25 +4,10 @@ const s3Url = `http://${bucketName}.s3.${region}.amazonaws.com`
 
 var version;
 
-var dropdown;
-var dropdown_button;
-
-// create onload function
 window.onload = function() {
     osSpecificDownloadButton()
     onload_navbar()
 }
-
-window.addEventListener('resize', function() {
-    const dropdown = document.querySelector('.navbar-links')
-    if (window.innerWidth > 768) {
-        dropdown.style.display = '';
-        dropdown_button.innerHTML = '&#9776;'
-    }
-})
-
-
-
 
 const windows_downloads_template = (version) => `
 <div class="download-links">
