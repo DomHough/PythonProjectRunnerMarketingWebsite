@@ -10,20 +10,7 @@ var dropdown_button;
 // create onload function
 window.onload = function() {
     osSpecificDownloadButton()
-    dropdown = document.querySelector('.navbar-links')
-    dropdown_button = document.querySelector('#navbar-dropdown-toggle')
-}
-
-function toggleNavbarDropdown() {
-    console.log('test')
-    if (dropdown.style.display === 'none' || dropdown.style.display === '') {
-        dropdown.style.display = 'flex';
-        dropdown_button.innerHTML = '&#10006;'
-    }
-    else {
-        dropdown.style.display = 'none';
-        dropdown_button.innerHTML = '&#9776;'
-    }
+    onload_navbar()
 }
 
 window.addEventListener('resize', function() {
