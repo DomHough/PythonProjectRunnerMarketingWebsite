@@ -119,13 +119,7 @@ main {
     cursor: pointer;
 }
 
-/* Popular Styles */
-span.python-blue {
-    color: var(--color-python-blue);
-}
-span.python-yellow {
-    color: var(--color-python-yellow);
-}
+
 
 
 

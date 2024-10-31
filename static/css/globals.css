@@ -44,5 +44,18 @@
     --border-width-medium: 2px;
     --border-width-large: 4px;
     --border-width-xl: 8px;
+}
 
+.logo {
+    background-color: var(--color-secondary);
+    padding: var(--spacing-large) var(--spacing-xl);
+    border-radius: 50vh;
+}
+
+/* Popular Styles */
+span.python-blue {
+    color: var(--color-python-blue);
+}
+span.python-yellow {
+    color: var(--color-python-yellow);
 }
