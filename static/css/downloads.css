@@ -13,5 +13,103 @@ body {
 
 main {
     display: flex;
+    flex-direction: column;
     flex-grow: 1;
+    align-items: center;
+}
+
+main > * {
+    margin: 8px;
+}
+
+main > h1 {
+    color: var(--color-python-blue);
+    font-size: 48px;
+}
+
+main > .control-bar {
+    width: 75%;
+    background-color: var(--color-python-blue);
+    padding: 4px;
+    border-radius: 16px;
+}
+
+main > .control-bar > .control-bar-form {
+    display: flex;
+}
+
+main > .control-bar > .control-bar-form > .left-side {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+}
+
+main > .control-bar > .control-bar-form > .right-side {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.control-bar-form #search-bar {
+    border: 2px solid white;
+    border-radius: 50vh;
+    color: rgba(255,255,255,0.75);
+    padding-left: 8px;
+}
+
+/* Table Styling */
+main > table {
+    border-collapse: collapse;
+    box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.25);
+    width: 75%;
+    border-radius: 16px;
+}
+
+
+
+
+/* Setting border radius for each corner element */
+main > table > thead > tr > th:first-child {
+    border-radius: 16px 0 0 0;
+}
+
+main > table > thead > tr > th:last-child {
+    border-radius: 0 16px 0 0;
+}
+
+main > table > tbody > tr:last-child > td:first-child {
+    border-radius: 0 0 0 16px;
+}
+
+main > table > tbody > tr:last-child > td:last-child {
+    border-radius: 0 0 16px 0;
+}
+
+/* Color of header */
+main > table thead th {
+    background-color: var(--color-python-blue) !important;
+    color: white;
+}
+
+/* Alternating colors for table body */
+main > table > tbody > tr:nth-child(even) > td {
+    background-color: white;
+}
+
+main > table > tbody > tr:nth-child(odd) > td {
+    background-color: #E1E1E1;
+}
+
+
+
+main > table td {
+    text-align: center;
+}
+
+main > table th, main > table td {
+    padding: 4px;
+}
+
+main > table * {
+    color: black;
 }
