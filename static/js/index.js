@@ -1,7 +1,3 @@
-const bucketName = 'pyrun-application-repository'
-const region = 'eu-west-2'
-const s3Url = `http://${bucketName}.s3.${region}.amazonaws.com`
-
 var version;
 
 window.onload = function() {
@@ -121,7 +117,6 @@ async function getLatestVersionFolder() {
     const xml = parser.parseFromString(text, 'application/xml');
 
     const keys = Array.from(xml.getElementsByTagName('Key'))
-    console.log()
 
     const versionFolders = keys
       .map(key => key.textContent.replace('/', ''))
