@@ -21,6 +21,8 @@
     <!-- Material Symbols Outlined Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght@20..48,700" />
 
+    <script src="static/js/consts.js"></script>
+    <script src="static/js/aws.js"></script>
     <script src="static/js/navbar.js"></script>
     <script src="static/js/downloads.js"></script>
   </head>
@@ -50,7 +52,28 @@
       </nav>
     </header>
     <main>
+      <h1>Downloads</h1>
+      <div class="control-bar">
+        <form class="control-bar-form">
+          <div class="left-side">
+            <div class="os-input-container">
+            </div>
+            <div class="arch-input-container">
 
+            </div>
+          </div>
+          <div class="right-side">
+            <div class="search-bar-input-container">
+              <label for="search-bar">Search</label>
+              <input id="search-bar" type="text">
+            </div>
+
+          </div>
+        </form>
+      </div>
+      <table id="downloads-table">
+        <tr></tr>
+      </table>
     </main>
 
     <footer>
