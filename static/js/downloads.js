@@ -1,4 +1,21 @@
+// Document Elements
+import {sort_data, process_data, capitalizeFirstLetter} from "./downloads_utils.js";
+
 var downloads_table;
+var os_input_container;
+var os_input_slider;
+var arch_input_slider;
+var arch_input_container;
+
+var search_input = "";
+var os_filter = "all";
+var arch_filter = "all";
+
+var sort_by_header = "name";
+var sort_by_direction = "asc";
+var secondary_sort_by_header = "name";
+
+var data;
 const headers = ["name", "version", "date", "size"]
 
 const test_data = [
@@ -57,55 +74,32 @@ const test_data = [
 
 ]
 
+var original_data;
 window.onload = async function () {
-  var data;
+  original_data = process_data(test_data);
   onload_navbar()
+
+  // get elements
   downloads_table = document.getElementById("downloads-table")
+
+
+  os_input_slider = document.getElementById("os-input-slider")
+  os_input_container = document.getElementById("os-input-container")
+
+  arch_input_slider = document.getElementById("arch-input-slider")
+  arch_input_container = document.getElementById("arch-input-container")
+
+  change_os(os_input_container.children[1])
   // var data = await get_all_download_files()
-  // console.log(data);
-  data = process_data(test_data);
-  console.log(data)
-  render_table(data, "", "name", "asc", "name")
+
+  data = sort_data(original_data, search_input, os_filter, arch_filter, sort_by_header, sort_by_direction, secondary_sort_by_header);
+  render_table(data)
 }
 
-function sort_data(data, search_query, sort_by_header, sort_by_direction, secondary_sort_by_header) {
-  let queried_data = data.filter(file => is_search_query_in_file(file, search_query));
 
-  let sorted_data = queried_data.sort((a, b) => {
-    if (a[sort_by_header] === b[sort_by_header]) {
-      if (sort_by_direction === "asc") {
-        return a[secondary_sort_by_header] > b[secondary_sort_by_header] ? 1 : -1;
-      }
-      else {
-        return a[secondary_sort_by_header] < b[secondary_sort_by_header] ? 1 : -1;
-      }
-    }
-    else {
-      if (sort_by_direction === "asc") {
-        return a[sort_by_header] > b[sort_by_header] ? 1 : -1;
-      }
-      else {
-        return a[sort_by_header] < b[sort_by_header] ? 1 : -1;
-      }
-    }
-  });
 
-  return sorted_data;
-}
-function is_search_query_in_file(file, search_query) {
-  if (search_query === "") {
-    return true;
-  }
-  let keys = Object.keys(file);
-  let search_query_in_key_value = keys.map(key => {
-    return file[key].includes(search_query);
-  });
-  return search_query_in_key_value.includes(true);
-}
 
-function render_table(data, search_query, sort_by_header, sort_by_direction, secondary_sort_by_header) {
-  data = sort_data(data, search_query, sort_by_header, sort_by_direction, secondary_sort_by_header)
-
+function render_table() {
 
   var html = '<thead><tr>';
 
@@ -124,22 +118,68 @@ function render_table(data, search_query, sort_by_header, sort_by_direction, sec
   downloads_table.innerHTML = html;
 }
 
-function process_data(data) {
-  // loop through data
-  data.forEach(file => {
-    // get file name
-    file['directory'] = file['path'].split('/').slice(0, -1).join('/');
-    file['name'] = file['path'].split('/').slice(-1).join('/');
 
-    // calculate version
-    file['version'] = file['name'].match(/v\d+\.\d+\.\d+/)[0].replace('v', '');
 
-    // calculate operating system
-    file['os'] = file['name'].match(/linux|windows|macos/)[0];
-  })
-  return data
+
+
+
+
+function change_os(ele) {
+  os_input_slider.style.left = ele.offsetLeft + 'px';
+  os_input_slider.style.width = ele.offsetWidth + 'px';
+
+  if (ele.children[0].value === "all") {
+    arch_input_container.innerHTML = ""
+    arch_input_container.style.display = "none"
+  }
+  else if (ele.children[0].value === "windows") {
+    arch_input_container.style.display = "flex"
+    arch_input_container.innerHTML = create_arch_selector(["all", "x86", "x64"])
+    arch_input_slider = document.getElementById("arch-input-slider")
+
+    change_arch(arch_input_container.children[1])
+  }
+  else if (ele.children[0].value === "linux") {
+    arch_input_container.innerHTML = ""
+    arch_input_container.style.display = "none"
+  }
+  else if (ele.children[0].value === "macos") {
+    arch_input_container.style.display = "flex"
+    arch_input_container.innerHTML = create_arch_selector(["all", "x64", "arm64"])
+    arch_input_slider = document.getElementById("arch-input-slider")
+
+    change_arch(arch_input_container.children[1])
+  }
+  os_filter = ele.children[0].value
+  arch_filter = "all"
+  data = sort_data(original_data, search_input, os_filter, arch_filter, sort_by_header, sort_by_direction, secondary_sort_by_header);
+  render_table(data)
 }
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
+function change_arch(ele) {
+  arch_input_slider.style.left = ele.offsetLeft + 'px';
+  arch_input_slider.style.width = ele.offsetWidth + 'px';
+  arch_filter = ele.children[0].value
+  data = sort_data(original_data)
+  render_table(data)
+}
+
+function create_arch_selector(archs) {
+  var html = "";
+  html += "<div id='arch-input-slider' class='arch-input-slider' onclick='change_arch(this)'></div>"
+  archs.forEach((arch, index) => {
+    html += `
+      <label for="${arch}" onclick="change_arch(this)">
+        ${arch}
+        <input type="radio" name="arch" value="${arch}" id="${arch}" ${index === 0 ? 'checked' : ''}>
+      </label>
+      `
+  })
+  return html;
+}
+
+function change_search_query(value) {
+  search_input = value
+  data = sort_data(original_data)
+  render_table(data)
 }
