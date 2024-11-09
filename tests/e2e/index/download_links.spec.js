@@ -175,19 +175,18 @@ describe('unknown download links', () => {
     const downloadLinks = await downloadLinkContainer.locator('> div');
     await expect(downloadLinks).toHaveCount(3);
 
-    var downloadButton = await downloadLinks.locator('button').nth(0);
-    await expect(downloadButton).toBeVisible();
+    var downloadButton;
 
+    downloadButton = await downloadLinks.locator('button').nth(0);
+    await expect(downloadButton).toBeVisible();
     await expect(downloadButton).toHaveText('Download For Windows');
-    var downloadButton = await downloadLinks.locator('button').nth(1);
-    await expect(downloadButton).toBeVisible();
 
+    downloadButton = await downloadLinks.locator('button').nth(1);
+    await expect(downloadButton).toBeVisible();
     await expect(downloadButton).toHaveText('Download For Mac');
-    var downloadButton = await downloadLinks.locator('button').nth(2);
-    await expect(downloadButton).toBeVisible();
 
-    await expect(downloadButton).toHaveText('Download For Linux');
-    var downloadButton = await downloadLinks.locator('button').nth(2);
+    downloadButton = await downloadLinks.locator('button').nth(2);
     await expect(downloadButton).toBeVisible();
+    await expect(downloadButton).toHaveText('Download For Linux');
   });
 });
