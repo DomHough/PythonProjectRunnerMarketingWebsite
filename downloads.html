@@ -24,7 +24,7 @@
     <script src="static/js/consts.js"></script>
     <script src="static/js/aws.js"></script>
     <script src="static/js/navbar.js"></script>
-    <script src="static/js/downloads.js"></script>
+    <script src="static/js/downloads.js" type="module"></script>
   </head>
   <body>
     <header>
@@ -56,16 +56,32 @@
       <div class="control-bar">
         <form class="control-bar-form">
           <div class="left-side">
-            <div class="os-input-container">
+            <div id="os-input-container" class="os-input-container">
+              <div id="os-input-slider"></div>
+              <label for="all_os" onclick="change_os(this)">
+                All
+                <input type="radio" name="os" value="all" id="all_os" checked>
+              </label>
+              <label for="windows" onclick="change_os(this)">
+                Windows
+                <input type="radio" name="os" value="windows" id="windows">
+              </label>
+              <label for="macos" onclick="change_os(this)">
+                MacOs
+                <input type="radio" name="os" value="macos" id="macos">
+              </label>
+              <label for="linux" onclick="change_os(this)">
+                Linux
+                <input type="radio" name="os" value="linux" id="linux" >
+              </label>
             </div>
-            <div class="arch-input-container">
-
+            <div id="arch-input-container" class="arch-input-container">
             </div>
           </div>
           <div class="right-side">
             <div class="search-bar-input-container">
               <label for="search-bar">Search</label>
-              <input id="search-bar" type="text">
+              <input id="search-bar" type="text" oninput="change_search_query(this.value)">
             </div>
 
           </div>
