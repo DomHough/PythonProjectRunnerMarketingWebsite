@@ -42,12 +42,45 @@ main > .control-bar > .control-bar-form > .left-side {
     width: 100%;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
 }
 
 main > .control-bar > .control-bar-form > .right-side {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+}
+
+.os-input-container, .arch-input-container {
+    display: flex;
+    flex-direction: row;
+    border: 4px solid white;
+    border-radius: 50vh;
+    position: relative;
+}
+input[type='radio'] {
+    display: none;
+}
+
+label:has(input[type='radio']:checked) {
+    color: var(--color-python-blue);
+    transition: 0.25s color;
+}
+
+label {
+    position: relative;
+    padding: 4px;
+    cursor: pointer;
+}
+
+#os-input-slider, #arch-input-slider {
+    position: absolute;
+    background-color: white;
+    border-radius: 50vh;
+    height: 100%;
+    top: 0;
+    transition: 0.25s left, 0.25s width;
 }
 
 .control-bar-form #search-bar {
