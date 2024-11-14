@@ -16,6 +16,7 @@ main {
     flex-direction: column;
     flex-grow: 1;
     align-items: center;
+    padding: 8px;
 }
 
 main > * {
@@ -31,7 +32,7 @@ main > .control-bar {
     width: 75%;
     background-color: var(--color-python-blue);
     padding: 4px;
-    border-radius: 16px;
+    border-radius: 100vh;
 }
 
 main > .control-bar > .control-bar-form {
@@ -68,7 +69,7 @@ label:has(input[type='radio']:checked) {
     transition: 0.25s color;
 }
 
-label {
+.left-side label {
     position: relative;
     padding: 4px;
     cursor: pointer;
@@ -83,11 +84,38 @@ label {
     transition: 0.25s left, 0.25s width;
 }
 
+.control-bar .search-bar-input-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
 .control-bar-form #search-bar {
     border: 2px solid white;
-    border-radius: 50vh;
+    border-radius: 50vh 0 0 50vh;
     color: rgba(255,255,255,0.75);
     padding-left: 8px;
+    height: 100%;
+}
+
+.control-bar-form #search-button {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid white;
+    border-radius: 0 50vh 50vh 0;
+    background-color: white;
+    color: var(--color-python-blue);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 4px;
+}
+
+.control-bar-form #search-button > span {
+    color: var(--color-python-blue);
+
 }
 
 /* Table Styling */
@@ -97,9 +125,6 @@ main > table {
     width: 75%;
     border-radius: 16px;
 }
-
-
-
 
 /* Setting border radius for each corner element */
 main > table > thead > tr > th:first-child {
@@ -145,4 +170,11 @@ main > table th, main > table td {
 
 main > table * {
     color: black;
+}
+
+#no-files-found {
+    background-color: var(--color-python-blue);
+    color: white;
+    border-radius: 16px;
+    font-size: 32px;
 }
