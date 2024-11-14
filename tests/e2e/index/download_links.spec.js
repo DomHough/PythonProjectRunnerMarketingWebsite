@@ -13,7 +13,7 @@ describe ('windows download links', () => {
     const downloadLinks = await downloadLinkContainer.locator('> div');
     await expect(downloadLinks).toHaveCount(1);
 
-    const downloadButton = await downloadLinks.locator('button');
+    const downloadButton = await downloadLinks.locator('a');
     await expect(downloadButton).toBeVisible();
     await expect(downloadButton).toHaveText('Download For Windows');
 
@@ -35,15 +35,14 @@ describe ('windows download links', () => {
 
     const downloadLinkContainer = await page.locator('.download-links-container');
     const downloadLinks = await downloadLinkContainer.locator('> div');
-    const downloadButton = await downloadLinks.locator('button');
+    const downloadButton = await downloadLinks.locator('a');
 
     const downloadVersionSelect = await downloadLinkContainer.locator('select');
 
     await downloadVersionSelect.selectOption({ label: 'x64'});
 
-    const onClickFunction = await downloadButton.evaluate(button => button.getAttribute('onclick'));
-
-    await expect(onClickFunction).toMatch(/window\.location\.href='http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-windows-x64\.exe'/);
+    const hrefValue = await downloadButton.getAttribute('href');
+    await expect(hrefValue).toMatch(/http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-windows-x64\.exe/);
   });
 
   test('windows x86 directs to correct download link', async ({ browser }) => {
@@ -53,15 +52,14 @@ describe ('windows download links', () => {
 
     const downloadLinkContainer = await page.locator('.download-links-container');
     const downloadLinks = await downloadLinkContainer.locator('> div');
-    const downloadButton = await downloadLinks.locator('button');
+    const downloadButton = await downloadLinks.locator('a');
 
     const downloadVersionSelect = await downloadLinkContainer.locator('select');
 
     await downloadVersionSelect.selectOption({ label: 'x86'});
 
-    const onClickFunction = await downloadButton.evaluate(button => button.getAttribute('onclick'));
-
-    await expect(onClickFunction).toMatch(/window\.location\.href='http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-windows-x86\.exe'/);
+    const hrefValue = await downloadButton.getAttribute('href');
+    await expect(hrefValue).toMatch(/http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-windows-x86\.exe/);
   });
 });
 
@@ -77,7 +75,7 @@ describe('linux download links', () => {
     const downloadLinks = await downloadLinkContainer.locator('> div');
     await expect(downloadLinks).toHaveCount(1);
 
-    const downloadButton = await downloadLinks.locator('button');
+    const downloadButton = await downloadLinks.locator('a');
     await expect(downloadButton).toBeVisible();
     await expect(downloadButton).toHaveText('Download For Linux');
   });
@@ -89,16 +87,14 @@ describe('linux download links', () => {
 
     const downloadLinkContainer = await page.locator('.download-links-container');
     const downloadLinks = await downloadLinkContainer.locator('> div');
-    const downloadButton = await downloadLinks.locator('button');
+    const downloadButton = await downloadLinks.locator('a');
 
-    const onClickFunction = await downloadButton.evaluate(button => button.getAttribute('onclick'));
-
-    await expect(onClickFunction).toMatch(/window\.location\.href='http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-linux-x64'/);
+    const hrefValue = await downloadButton.getAttribute('href');
+    await expect(hrefValue).toMatch(/http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-linux-x64/);
   });
 });
 
 describe('mac download links', () => {
-
   test('mac has mac download link', async ({browser}) => {
     const context = await browser.newContext({userAgent: 'mac os'});
     const page = await context.newPage();
@@ -110,7 +106,7 @@ describe('mac download links', () => {
     const downloadLinks = await downloadLinkContainer.locator('> div');
     await expect(downloadLinks).toHaveCount(1);
 
-    const downloadButton = await downloadLinks.locator('button');
+    const downloadButton = await downloadLinks.locator('a');
     await expect(downloadButton).toBeVisible();
     await expect(downloadButton).toHaveText('Download For Mac');
 
@@ -132,15 +128,14 @@ describe('mac download links', () => {
 
     const downloadLinkContainer = await page.locator('.download-links-container');
     const downloadLinks = await downloadLinkContainer.locator('> div');
-    const downloadButton = await downloadLinks.locator('button');
+    const downloadButton = await downloadLinks.locator('a');
 
     const downloadVersionSelect = await downloadLinkContainer.locator('select');
 
     await downloadVersionSelect.selectOption({ label: 'x64'});
 
-    const onClickFunction = await downloadButton.evaluate(button => button.getAttribute('onclick'));
-
-    await expect(onClickFunction).toMatch(/window\.location\.href='http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-macos-x64'/);
+    const hrefValue = await downloadButton.getAttribute('href');
+    await expect(hrefValue).toMatch(/http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-macos-x64/);
   });
 
   test('macos arm64 directs to correct download link', async ({ browser }) => {
@@ -150,20 +145,19 @@ describe('mac download links', () => {
 
     const downloadLinkContainer = await page.locator('.download-links-container');
     const downloadLinks = await downloadLinkContainer.locator('> div');
-    const downloadButton = await downloadLinks.locator('button');
+    const downloadButton = await downloadLinks.locator('a');
 
     const downloadVersionSelect = await downloadLinkContainer.locator('select');
 
     await downloadVersionSelect.selectOption({ label: 'arm64'});
 
-    const onClickFunction = await downloadButton.evaluate(button => button.getAttribute('onclick'));
-
-    await expect(onClickFunction).toMatch(/window\.location\.href='http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-macos-arm64'/);
+    const hrefValue = await downloadButton.getAttribute('href');
+    await expect(hrefValue).toMatch(/http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-macos-arm64/);
   });
 });
 
 describe('unknown download links', () => {
-  test('unknown has all downlaod links', async ({browser}) => {
+  test('unknown has all download links', async ({browser}) => {
     const context = await browser.newContext({userAgent: 'unknown'});
     const page = await context.newPage();
     await page.goto('index.html');
@@ -177,15 +171,15 @@ describe('unknown download links', () => {
 
     var downloadButton;
 
-    downloadButton = await downloadLinks.locator('button').nth(0);
+    downloadButton = await downloadLinks.locator('a').nth(0);
     await expect(downloadButton).toBeVisible();
     await expect(downloadButton).toHaveText('Download For Windows');
 
-    downloadButton = await downloadLinks.locator('button').nth(1);
+    downloadButton = await downloadLinks.locator('a').nth(1);
     await expect(downloadButton).toBeVisible();
     await expect(downloadButton).toHaveText('Download For Mac');
 
-    downloadButton = await downloadLinks.locator('button').nth(2);
+    downloadButton = await downloadLinks.locator('a').nth(2);
     await expect(downloadButton).toBeVisible();
     await expect(downloadButton).toHaveText('Download For Linux');
   });
