@@ -3,6 +3,7 @@
     <node-interpreter value="project" />
     <playwright-package value="$PROJECT_DIR$/node_modules/@playwright/test" />
     <working-dir value="$PROJECT_DIR$" />
+    <cli-options value="--workers 8" />
     <envs />
     <scope-kind value="ALL" />
     <method v="2" />
