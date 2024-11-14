@@ -1,5 +1,6 @@
-async function get_aws_data() {
-   console.log(s3Url)
+import {s3Url} from './consts.js';
+
+export async function get_aws_data() {
     const response = await fetch(s3Url);
     const text = await response.text();
     const parser = new DOMParser();
@@ -11,13 +12,12 @@ async function get_all_download_version_folders() {
     const xml = await get_aws_data();
     const keys = Array.from(xml.getElementsByTagName('Key'))
 
-    const version_folders= keys
+    return keys
         .map(key => key.textContent.replace('/', ''))
         .filter(key => /^[0-9]+\.[0-9]+\.[0-9]$/.test(key));
-    return version_folders;
 }
 
-async function get_all_download_files() {
+export async function get_all_download_files() {
     const xml = await get_aws_data();
     let contents = Array.from(xml.getElementsByTagName('Contents'));
     contents = contents.filter(c => {
@@ -29,6 +29,28 @@ async function get_all_download_files() {
         date: c.getElementsByTagName("LastModified")[0].textContent,
     }));
     return files;
+}
+
+export async function get_latest_version_folder() {
+    const xml = await get_aws_data();
+
+    const keys = Array.from(xml.getElementsByTagName('Key'))
+
+    const versionFolders = keys
+        .map(key => key.textContent.replace('/', ''))
+        .filter(key => /^[0-9]+\.[0-9]+\.[0-9]$/.test(key));
+
+    // get highest version number
+    versionFolders.sort((a, b) => {
+        a = a.split('.').map(Number);
+        b = b.split('.').map(Number);
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] > b[i]) return -1;
+            if (a[i] < b[i]) return 1;
+        }
+        return 0;
+    })
+    return versionFolders[0]
 }
 
 function is_directory(key) {
