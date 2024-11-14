@@ -1,12 +1,13 @@
 var dropdown;
 var dropdown_button;
 
-function onload_navbar() {
+export function onload_navbar() {
   dropdown = document.querySelector('.navbar-links')
   dropdown_button = document.querySelector('#navbar-dropdown-toggle')
+  dropdown_button.addEventListener('click', toggle_navbar_dropdown)
 }
 
-function toggleNavbarDropdown() {
+function toggle_navbar_dropdown() {
   console.log('test')
   if (dropdown.style.display === 'none' || dropdown.style.display === '') {
     dropdown.style.display = 'flex';
