@@ -21,9 +21,7 @@
     <!-- Material Symbols Outlined Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght@20..48,700" />
 
-    <script src="static/js/consts.js"></script>
-    <script src="static/js/aws.js"></script>
-    <script src="static/js/navbar.js"></script>
+    <script src="static/js/navbar.js" type="module"></script>
     <script src="static/js/downloads.js" type="module"></script>
   </head>
   <body>
@@ -34,14 +32,14 @@
             <a class="logo"><span class="python-blue">Py</span><span class="python-yellow">Run</span></a>
           </div>
           <div class="hamburger-section">
-            <button id="navbar-dropdown-toggle" onclick="toggleNavbarDropdown(this)">&#9776;</button>
+            <button id="navbar-dropdown-toggle">&#9776;</button>
           </div>
         </div>
         <div class="navbar-links">
           <div class="navbar-center">
-            <a href="/features">Features</a>
-            <a href="/documentation">Documentation</a>
-            <a href="downloads.html">Download</a>
+            <a id="navbar-features-anchor" href="/features">Features</a>
+            <a id="navbar-documentation-anchor" href="/documentation">Documentation</a>
+            <a id="navbar-downloads-anchor" href="downloads.html">Downloads</a>
           </div>
           <div class="navbar-right">
             <a href="/features">Dev Web</a>
@@ -54,23 +52,23 @@
     <main>
       <h1>Downloads</h1>
       <div class="control-bar">
-        <form class="control-bar-form">
+        <form class="control-bar-form" onsubmit="return false">
           <div class="left-side">
             <div id="os-input-container" class="os-input-container">
               <div id="os-input-slider"></div>
-              <label for="all_os" onclick="change_os(this)">
+              <label for="all_os" id="all-os-selector-label">
                 All
                 <input type="radio" name="os" value="all" id="all_os" checked>
               </label>
-              <label for="windows" onclick="change_os(this)">
+              <label for="windows" id="windows-selector-label">
                 Windows
                 <input type="radio" name="os" value="windows" id="windows">
               </label>
-              <label for="macos" onclick="change_os(this)">
+              <label for="macos" id="macos-selector-label">
                 MacOs
                 <input type="radio" name="os" value="macos" id="macos">
               </label>
-              <label for="linux" onclick="change_os(this)">
+              <label for="linux" id="linux-selector-label">
                 Linux
                 <input type="radio" name="os" value="linux" id="linux" >
               </label>
@@ -80,8 +78,9 @@
           </div>
           <div class="right-side">
             <div class="search-bar-input-container">
-              <label for="search-bar">Search</label>
-              <input id="search-bar" type="text" oninput="change_search_query(this.value)">
+              <label for="search-bar"></label>
+              <input id="search-bar" name="search" type="text">
+              <button id="search-button"><span class="material-symbols-outlined">search</span></button>
             </div>
 
           </div>
