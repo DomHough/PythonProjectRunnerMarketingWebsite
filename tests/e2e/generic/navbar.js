@@ -29,7 +29,6 @@ function testNavbar(url) {
             await page.goto(url);
             await page.setViewportSize({width: 320, height: 768});
             await page.waitForTimeout(500); // wait for the page to adjust
-            await page.waitForTimeout(500); // wait for the page to adjust
             const dropdownButton = await page.locator('#navbar-dropdown-toggle');
             const navbar_links = await page.locator('.navbar-links');
             await expect(dropdownButton).toBeVisible();
@@ -77,6 +76,13 @@ function testNavbar(url) {
         });
     });
     describe('navigate links', () => {
+        test('logo navigates to index.html', async ({page}) => {
+            await page.goto(url);
+            const navbar = await page.locator('.navbar');
+            const logo = await navbar.locator('.logo');
+            await logo.click();
+            await expect(page.url().split('/').pop()).toBe(`index.html`);
+        });
         test('downloads links navigates to downloads.html', async ({page}) => {
             await page.goto(url);
             const downloadsLink = await page.locator('#navbar-downloads-anchor');
