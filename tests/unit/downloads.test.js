@@ -1,5 +1,5 @@
 const { describe, test, expect } = require('@jest/globals');
-const {is_search_query_in_file, capitalized_case, sort_data, compare_version_number} = require("../../static/js/downloads_utils");
+const {is_search_query_in_file, sort_data, compare_version_number} = require("../../static/js/downloads_utils");
 
 describe('test is_search_query_in_file', () => {
     test('search query is empty', () => {
@@ -14,21 +14,6 @@ describe('test is_search_query_in_file', () => {
     test('matching query in different case', () => {
         expect(is_search_query_in_file({name: 'PyRun'}, "pyrun")).toBe(true);
     })
-});
-
-describe('test capitalized_case', () => {
-    test('single word', () => {
-        expect(capitalized_case('hello')).toBe('Hello');
-    })
-    test('multiple words', () => {
-        expect(capitalized_case('hello world')).toBe('Hello World');
-    })
-    test('multiple words with special character', () => {
-        expect(capitalized_case('hello world!')).toBe('Hello World!');
-    });
-    test('word that starts with special character', () => {
-        expect(capitalized_case('!hello world')).toBe('!hello World');
-    });
 });
 
 describe('test sort_data', () => {
@@ -66,7 +51,7 @@ describe('test sort_data', () => {
             {name: 'test3', version: '1.0.2'},
         ]
         const actual = sort_data(data, "", "", "", "version", "asc");
-        expect(actual).toEqual(data);
+        expect(actual).toEqual(expected);
     })
 
     test('data with sort by version descending', () => {
