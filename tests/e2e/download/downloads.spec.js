@@ -77,7 +77,7 @@ function convert_data_to_xml(data) {
 const xml = convert_data_to_xml(data)
 
 test.beforeEach(async ({ page }) => {
-    await page.route('http://pyrun-application-repository.s3.eu-west-2.amazonaws.com', async (route) => {
+    await page.route('https://pyrun-application-repository.s3.eu-west-2.amazonaws.com', async (route) => {
         await route.fulfill({
             status: 200,
             body: xml,
