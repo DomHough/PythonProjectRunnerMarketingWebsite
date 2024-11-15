@@ -1,89 +1,110 @@
-const bucketName = 'pyrun-application-repository'
-const region = 'eu-west-2'
-const s3Url = `http://${bucketName}.s3.${region}.amazonaws.com`
+import { onload_navbar } from './navbar.js'
+import { s3Url } from './consts.js';
+import { get_latest_version_folder } from './aws.js';
 
 var version;
 
-var dropdown;
-var dropdown_button;
-
-// create onload function
 window.onload = function() {
     osSpecificDownloadButton()
-    dropdown = document.querySelector('.navbar-links')
-    dropdown_button = document.querySelector('#navbar-dropdown-toggle')
+    onload_navbar()
 }
 
-function toggleNavbarDropdown() {
-    console.log('test')
-    if (dropdown.style.display === 'none' || dropdown.style.display === '') {
-        dropdown.style.display = 'flex';
-        dropdown_button.innerHTML = '&#10006;'
-    }
-    else {
-        dropdown.style.display = 'none';
-        dropdown_button.innerHTML = '&#9776;'
-    }
+function windows_downloads_template(version) {
+    const container = document.createElement('div');
+    container.className = 'download-links';
+
+    const anchor = document.createElement('a');
+    anchor.textContent = 'Download For Windows';
+    anchor.href = `${s3Url}/${version}/PyRun-v${version}-windows-x64.exe`;
+    container.appendChild(anchor);
+
+    const selectWrapper = document.createElement('div');
+    selectWrapper.className = 'select-wrapper';
+    container.appendChild(selectWrapper);
+
+    const select = document.createElement('select');
+    select.addEventListener('change', function() {
+        selected_os_windows(this);
+    });
+    selectWrapper.appendChild(select);
+
+    const x64Option = document.createElement('option');
+    x64Option.value = 'x64';
+    x64Option.textContent = 'x64';
+    x64Option.selected = true;
+    x64Option.hidden = true;
+    select.appendChild(x64Option);
+
+    const x86Option = document.createElement('option');
+    x86Option.value = 'x86';
+    x86Option.textContent = 'x86';
+    select.appendChild(x86Option);
+
+    return container;
 }
 
-window.addEventListener('resize', function() {
-    const dropdown = document.querySelector('.navbar-links')
-    if (window.innerWidth > 768) {
-        dropdown.style.display = '';
-        dropdown_button.innerHTML = '&#9776;'
-    }
-})
+function mac_downloads_template(version) {
+    const container = document.createElement('div');
+    container.className = 'download-links';
 
+    const anchor = document.createElement('a');
+    anchor.textContent = 'Download For Mac';
+    anchor.href = `${s3Url}/${version}/PyRun-v${version}-macos-x64`;
+    container.appendChild(anchor);
 
+    const selectWrapper = document.createElement('div');
+    selectWrapper.className = 'select-wrapper';
+    container.appendChild(selectWrapper);
 
+    const select = document.createElement('select');
+    select.addEventListener('change', function() {
+        selected_os_mac(this);
+    });
+    selectWrapper.appendChild(select);
 
-const windows_downloads_template = (version) => `
-<div class="download-links">
-  <button onclick="window.location.href='${s3Url}/${version}/PyRun-v${version}-windows-x64.exe'">Download For Windows</button>
-  <div class="select-wrapper">
-      <select onchange="selected_os_windows(this)">
-        <option value="x64" selected hidden>x64</option>
-        <option value="x86">x86</option>
-      </select>
-  </div>
-</div>
-`
+    const x64Option = document.createElement('option');
+    x64Option.value = 'x64';
+    x64Option.textContent = 'x64';
+    select.appendChild(x64Option);
 
-const mac_downloads_template = (version) => `
-<div class="download-links">
-  <button onclick="window.location.href='${s3Url}/${version}/PyRun-v${version}-macos-x64'">Download For Mac</button>
-  <div class="select-wrapper">
-      <select onchange="selected_os_mac(this)">
-        <option value="x64">x64</option>
-        <option value="arm64" selected hidden>arm64</option>
-      </select>
-  </div>
-</div>
-`
+    const arm64Option = document.createElement('option');
+    arm64Option.value = 'arm64';
+    arm64Option.textContent = 'arm64';
+    arm64Option.selected = true;
+    arm64Option.hidden = true;
+    select.appendChild(arm64Option);
 
-const linux_downloads_template= (version) => `
-<div class="download-links">
-  <button onclick="window.location.href='${s3Url}/${version}/PyRun-v${version}-linux-x64'">Download For Linux</button>
-</div>
-`
+    return container;
+}
+
+function linux_downloads_template(version) {
+    const container = document.createElement('div');
+    container.className = 'download-links';
+
+    const anchor = document.createElement('a');
+    anchor.textContent = 'Download For Linux';
+    anchor.href = `${s3Url}/${version}/PyRun-v${version}-linux-x64`;
+    container.appendChild(anchor);
+    return container;
+}
 async function osSpecificDownloadButton() {
-    os = getOS();
-    version = await getLatestVersionFolder();
+    let os = getOS();
+    version = await get_latest_version_folder();
     if (version === undefined) {
         version = '0.0.0'
     }
+    document.querySelector('.download-links-container').innerHTML = '';
     if (os === 'windows') {
-        document.querySelector('.download-links-container').innerHTML += windows_downloads_template(version);
+        document.querySelector('.download-links-container').appendChild(windows_downloads_template(version));
     }
     else if (os === 'mac os') {
-        document.querySelector('.download-links-container').innerHTML += mac_downloads_template(version);
+        document.querySelector('.download-links-container').appendChild(mac_downloads_template(version));
     }
     else if (os === 'linux') {
-        document.querySelector('.download-links-container').innerHTML += linux_downloads_template(version);
+        document.querySelector('.download-links-container').appendChild(linux_downloads_template(version));
     }
     else {
-        html = windows_downloads_template + mac_downloads_template + linux_downloads_template;
-        document.querySelector('.download-links-container').innerHTML += html;
+        document.querySelector('.download-links-container').append(windows_downloads_template(version), mac_downloads_template(version), linux_downloads_template(version))
     }
 }
 
@@ -110,14 +131,12 @@ function getOS() {
 }
 
 function selected_os_windows(element) {
-    value = element.value;
+    let value = element.value;
     // loop through list of options and hide selected value
     Array.from(element.children).forEach(option => {
-        if (option.value == value) {
-            // set to hidden
-            console.log('hiding')
+        if (option.value === value) {
             option.hidden = true;
-            element.parentElement.parentElement.querySelector('button').setAttribute('onclick', `window.location.href='${s3Url}/${version}/PyRun-v${version}-windows-${value}.exe'`)
+            element.parentElement.parentElement.querySelector('a').href = `${s3Url}/${version}/PyRun-v${version}-windows-${value}.exe`;
         }
         else {
             option.hidden = false;
@@ -126,14 +145,12 @@ function selected_os_windows(element) {
 }
 
 function selected_os_mac(element) {
-    value = element.value;
+    let value = element.value;
     // loop through list of options and hide selected value
     Array.from(element.children).forEach(option => {
-        if (option.value == value) {
-            // set to hidden
-            console.log('hiding')
+        if (option.value === value) {
             option.hidden = true;
-            element.parentElement.parentElement.querySelector('button').setAttribute('onclick', `window.location.href='${s3Url}/${version}/PyRun-v${version}-macos-${value}'`)
+            element.parentElement.parentElement.querySelector('a').href = `${s3Url}/${version}/PyRun-v${version}-macos-${value}`;
         }
         else {
             option.hidden = false;
@@ -142,28 +159,3 @@ function selected_os_mac(element) {
 }
 
 
-async function getLatestVersionFolder() {
-    const response = await fetch(s3Url);
-    const text = await response.text();
-    const parser = new DOMParser();
-    const xml = parser.parseFromString(text, 'application/xml');
-
-    const keys = Array.from(xml.getElementsByTagName('Key'))
-    console.log()
-
-    const versionFolders = keys
-      .map(key => key.textContent.replace('/', ''))
-      .filter(key => /^[0-9]+\.[0-9]+\.[0-9]$/.test(key));
-
-    // get highest version number
-    versionFolders.sort((a, b) => {
-        a = a.split('.').map(Number);
-        b = b.split('.').map(Number);
-        for (let i = 0; i < a.length; i++) {
-            if (a[i] > b[i]) return -1;
-            if (a[i] < b[i]) return 1;
-        }
-        return 0;
-    })
-    return versionFolders[0]
-}

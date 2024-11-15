@@ -1,0 +1,180 @@
+.navbar {
+    position: relative !important;
+}
+
+html {
+    height: 100dvh;
+}
+body {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    padding: 8px;
+}
+
+main > * {
+    margin: 8px;
+}
+
+main > h1 {
+    color: var(--color-python-blue);
+    font-size: 48px;
+}
+
+main > .control-bar {
+    width: 75%;
+    background-color: var(--color-python-blue);
+    padding: 4px;
+    border-radius: 100vh;
+}
+
+main > .control-bar > .control-bar-form {
+    display: flex;
+}
+
+main > .control-bar > .control-bar-form > .left-side {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+main > .control-bar > .control-bar-form > .right-side {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.os-input-container, .arch-input-container {
+    display: flex;
+    flex-direction: row;
+    border: 4px solid white;
+    border-radius: 50vh;
+    position: relative;
+}
+input[type='radio'] {
+    display: none;
+}
+
+label:has(input[type='radio']:checked) {
+    color: var(--color-python-blue);
+    transition: 0.25s color;
+}
+
+.left-side label {
+    position: relative;
+    padding: 4px;
+    cursor: pointer;
+}
+
+#os-input-slider, #arch-input-slider {
+    position: absolute;
+    background-color: white;
+    border-radius: 50vh;
+    height: 100%;
+    top: 0;
+    transition: 0.25s left, 0.25s width;
+}
+
+.control-bar .search-bar-input-container {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.control-bar-form #search-bar {
+    border: 2px solid white;
+    border-radius: 50vh 0 0 50vh;
+    color: rgba(255,255,255,0.75);
+    padding-left: 8px;
+    height: 100%;
+}
+
+.control-bar-form #search-button {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid white;
+    border-radius: 0 50vh 50vh 0;
+    background-color: white;
+    color: var(--color-python-blue);
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 4px;
+}
+
+.control-bar-form #search-button > span {
+    color: var(--color-python-blue);
+
+}
+
+/* Table Styling */
+main > table {
+    border-collapse: collapse;
+    box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.25);
+    width: 75%;
+    border-radius: 16px;
+}
+
+/* Setting border radius for each corner element */
+main > table > thead > tr > th:first-child {
+    border-radius: 16px 0 0 0;
+}
+
+main > table > thead > tr > th:last-child {
+    border-radius: 0 16px 0 0;
+}
+
+main > table > tbody > tr:last-child > td:first-child {
+    border-radius: 0 0 0 16px;
+}
+
+main > table > tbody > tr:last-child > td:last-child {
+    border-radius: 0 0 16px 0;
+}
+
+/* Color of header */
+main > table thead th {
+    background-color: var(--color-python-blue) !important;
+    color: white;
+}
+
+/* Alternating colors for table body */
+main > table > tbody > tr:nth-child(even) > td {
+    background-color: white;
+}
+
+main > table > tbody > tr:nth-child(odd) > td {
+    background-color: #E1E1E1;
+}
+
+
+
+main > table td {
+    text-align: center;
+}
+
+main > table th, main > table td {
+    padding: 4px;
+}
+
+main > table * {
+    color: black;
+}
+
+#no-files-found {
+    background-color: var(--color-python-blue);
+    color: white;
+    border-radius: 16px;
+    font-size: 32px;
+}

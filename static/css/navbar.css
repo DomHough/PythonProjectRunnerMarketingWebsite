@@ -6,7 +6,6 @@
     width: 100%;
     background-color: var(--color-python-blue);
     z-index: 1000;
-    overflow: clip;
 }
 
 .navbar .logo {
@@ -40,8 +39,12 @@
 
 .navbar-links {
     display: none;
+    position: absolute;
     flex-direction: column;
+    top: 50px;
     height: calc(100dvh - 50px);
+    background-color: var(--color-python-blue);
+    width: 100%;
 }
 
 .navbar-links > * {
@@ -60,6 +63,7 @@
     margin: 8px;
 }
 
+/* Desktop Styling */
 @media only screen and (min-width: 768px) {
     .navbar {
         flex-direction: row !important;
@@ -76,6 +80,8 @@
         flex-direction: row;
         flex: 0 0 66.66%;
         height: 50px;
+        position: relative;
+        top: 0;
     }
     .navbar-links > * {
         flex-direction: row;

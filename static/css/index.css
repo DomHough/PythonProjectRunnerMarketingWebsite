@@ -31,12 +31,6 @@ h4 {
     font-weight: 400;
 }
 
-.logo {
-    background-color: var(--color-secondary);
-    padding: var(--spacing-large) var(--spacing-xl);
-    border-radius: 50vh;
-}
-
 body {
     width: 100%;
 }
@@ -119,13 +113,7 @@ main {
     cursor: pointer;
 }
 
-/* Popular Styles */
-span.python-blue {
-    color: var(--color-python-blue);
-}
-span.python-yellow {
-    color: var(--color-python-yellow);
-}
+
 
 
 
@@ -299,8 +287,11 @@ span.python-yellow {
     flex-direction: row;
 }
 
-#download button {
-
+#download a {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     font-size: 1rem;
     height: 50px;
     border-radius: 50vh 0 0 50vh;
@@ -309,27 +300,27 @@ span.python-yellow {
     flex-grow: 1;
 }
 
-#download button:hover {
+#download a:hover {
     background-color: white;
     cursor: pointer;
     color: var(--color-python-blue);
 }
 
-#download button:active {
+#download a:active {
     border: var(--border-width-large) inset white;
 }
 
-#download button:active + div > select {
+#download a:active + div > select {
     border: var(--border-width-large) inset white;
     border-left: none;
 
 }
 
-#download button:not(:only-child) {
+#download a:not(:only-child) {
     border-right: none;
 }
 
-#download .download-links > button:only-child {
+#download .download-links > a:only-child {
     border-radius: 50vh !important;
 }
 
