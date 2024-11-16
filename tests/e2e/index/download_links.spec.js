@@ -42,7 +42,7 @@ describe ('windows download links', () => {
     await downloadVersionSelect.selectOption({ label: 'x64'});
 
     const hrefValue = await downloadButton.getAttribute('href');
-    await expect(hrefValue).toMatch(/http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-windows-x64\.exe/);
+    await expect(hrefValue).toMatch(/https:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-windows-x64\.exe/);
   });
 
   test('windows x86 directs to correct download link', async ({ browser }) => {
@@ -59,7 +59,7 @@ describe ('windows download links', () => {
     await downloadVersionSelect.selectOption({ label: 'x86'});
 
     const hrefValue = await downloadButton.getAttribute('href');
-    await expect(hrefValue).toMatch(/http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-windows-x86\.exe/);
+    await expect(hrefValue).toMatch(/https:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-windows-x86\.exe/);
   });
 });
 
@@ -90,7 +90,7 @@ describe('linux download links', () => {
     const downloadButton = await downloadLinks.locator('a');
 
     const hrefValue = await downloadButton.getAttribute('href');
-    await expect(hrefValue).toMatch(/http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-linux-x64/);
+    await expect(hrefValue).toMatch(/https:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-linux-x64/);
   });
 });
 
@@ -135,7 +135,7 @@ describe('mac download links', () => {
     await downloadVersionSelect.selectOption({ label: 'x64'});
 
     const hrefValue = await downloadButton.getAttribute('href');
-    await expect(hrefValue).toMatch(/http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-macos-x64/);
+    await expect(hrefValue).toMatch(/https:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-macos-x64/);
   });
 
   test('macos arm64 directs to correct download link', async ({ browser }) => {
@@ -152,7 +152,7 @@ describe('mac download links', () => {
     await downloadVersionSelect.selectOption({ label: 'arm64'});
 
     const hrefValue = await downloadButton.getAttribute('href');
-    await expect(hrefValue).toMatch(/http:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-macos-arm64/);
+    await expect(hrefValue).toMatch(/https:\/\/pyrun-application-repository\.s3\.eu-west-2\.amazonaws\.com\/\d+\.\d+\.\d+\/PyRun-v\d+\.\d+\.\d+-macos-arm64/);
   });
 });
 

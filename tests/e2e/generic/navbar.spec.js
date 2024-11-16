@@ -1,11 +1,10 @@
 // @ts-check
 const { test, expect, describe } = require('@playwright/test');
 
-function testNavbar(url) {
-    describe('Navbar dropdown', () => {
-
-
-        test('navbar dropdown toggle button is not visible on large screens', async ({page}) => {
+let urls = ['index.html', 'downloads.html']
+urls.forEach(url => {
+    describe(`Navbar dropdown on ${url}`, () => {
+        test(`navbar dropdown toggle button is not visible on large screens on ${url}`, async ({page}) => {
             await page.goto(url);
             await page.setViewportSize({width: 1024, height: 768});
             await page.waitForTimeout(500); // wait for the page to adjust
@@ -15,7 +14,7 @@ function testNavbar(url) {
             await expect(navbar_links).toBeVisible();
         });
 
-        test('navbar dropdown is visible on small screens', async ({page}) => {
+        test(`navbar dropdown is visible on small screens on ${url}`, async ({page}) => {
             await page.goto(url);
             await page.setViewportSize({width: 320, height: 768});
             await page.waitForTimeout(500); // wait for the page to adjust
@@ -25,10 +24,9 @@ function testNavbar(url) {
             await expect(navbar_links).not.toBeVisible();
         });
 
-        test('navbar dropdown toggle button toggles dropdown visibility', async ({page}) => {
+        test(`navbar dropdown toggle button toggles dropdown visibility on ${url}`, async ({page}) => {
             await page.goto(url);
             await page.setViewportSize({width: 320, height: 768});
-            await page.waitForTimeout(500); // wait for the page to adjust
             await page.waitForTimeout(500); // wait for the page to adjust
             const dropdownButton = await page.locator('#navbar-dropdown-toggle');
             const navbar_links = await page.locator('.navbar-links');
@@ -41,7 +39,7 @@ function testNavbar(url) {
             await expect(navbar_links).not.toBeVisible();
         });
 
-        test('navbar dropdown toggle button toggles between hamburger and close icons', async ({page}) => {
+        test(`navbar dropdown toggle button toggles between hamburger and close icons on ${url}`, async ({page}) => {
             await page.goto(url);
             await page.setViewportSize({width: 320, height: 768});
             await page.waitForTimeout(500); // wait for the page to adjust
@@ -55,7 +53,7 @@ function testNavbar(url) {
             await expect(dropdownButton).toHaveText('☰');
         });
 
-        test('navbar dropdown is hidden when window is resized to large screen', async ({page}) => {
+        test(`navbar dropdown is hidden when window is resized to large screen on ${url}`, async ({page}) => {
             await page.goto(url);
             await page.setViewportSize({width: 320, height: 768});
             await page.waitForTimeout(500); // wait for the page to adjust
@@ -76,15 +74,19 @@ function testNavbar(url) {
             await expect(navbar_links).not.toBeVisible();
         });
     });
-    describe('navigate links', () => {
-        test('downloads links navigates to downloads.html', async ({page}) => {
+    describe(`navigate links on ${url}`, () => {
+        test(`logo navigates to index.html on ${url}`, async ({page}) => {
+            await page.goto(url);
+            const navbar = await page.locator('.navbar');
+            const logo = await navbar.locator('.logo');
+            await logo.click();
+            await expect(page.url().split('/').pop()).toBe(`index.html`);
+        });
+        test(`downloads links navigates to downloads.html on ${url}`, async ({page}) => {
             await page.goto(url);
             const downloadsLink = await page.locator('#navbar-downloads-anchor');
             await downloadsLink.click();
             await expect(page.url().split('/').pop()).toBe(`downloads.html`);
         });
     })
-}
-
-
-module.exports = { testNavbar };
+});
