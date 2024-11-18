@@ -1,0 +1,117 @@
+.navbar {
+    position: relative !important;
+}
+
+html {
+    height: 100dvh;
+}
+
+body {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+    padding: 8px;
+}
+
+.contactus-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.traditional-contact-container,  .social-media-contact-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 32px;
+    margin: 8px;
+    padding: 16px;
+    padding-top: 32px;
+    width: 100%;
+    box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.25);
+    gap: 8px;
+}
+
+.card-header {
+    position: absolute;
+    border-radius: 32px 32px 0 0;
+    height: 32px;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.contact-method-container {
+    display: flex;
+    flex-direction: row;
+    color: black;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+}
+
+.contact-method-container > span {
+    color: var(--color-secondary);
+    padding: 4px;
+    border-radius: 50vh;
+    background-color: var(--color-primary);
+    font-size: 32px;
+}
+
+.contact-method-container > a {
+    color: black;
+    font-size: 24px;
+}
+
+.contact-method-container > .logo-container {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    padding: 8px;
+}
+
+.contact-method-container > .logo-container > img {
+    width: 100%;
+    height: 100%;
+}
+
+.traditional-contact-container > .card-header {
+    background-color: var(--color-python-blue);
+}
+
+.social-media-contact-container > .card-header {
+    background-color: var(--color-python-yellow);
+}
+
+h1, h2, h3 {
+    color: black;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 32px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+@media only screen and (min-width: 768px) {
+    .contactus-container {
+        flex-direction: row;
+    }
+    .traditional-contact-container,  .social-media-contact-container {
+        width: 50%;
+    }
+}
