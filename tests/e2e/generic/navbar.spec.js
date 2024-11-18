@@ -1,7 +1,7 @@
 // @ts-check
 const { test, expect, describe } = require('@playwright/test');
 
-let urls = ['index.html', 'downloads.html']
+let urls = ['index.html', 'downloads.html', 'contactus.html']
 urls.forEach(url => {
     describe(`Navbar dropdown on ${url}`, () => {
         test(`navbar dropdown toggle button is not visible on large screens on ${url}`, async ({page}) => {
@@ -87,6 +87,13 @@ urls.forEach(url => {
             const downloadsLink = await page.locator('#navbar-downloads-anchor');
             await downloadsLink.click();
             await expect(page.url().split('/').pop()).toBe(`downloads.html`);
+        });
+
+        test(`contact us link navigates to contactus.html on ${url}`, async ({page}) => {
+            await page.goto(url);
+            const contactUsLink = await page.locator('#navbar-contactus-anchor');
+            await contactUsLink.click();
+            await expect(page.url().split('/').pop()).toBe('contactus.html');
         });
     })
 });
