@@ -92,6 +92,13 @@ async function osSpecificDownloadButton() {
         version = '0.0.0'
     }
     document.querySelector('.download-links-container').innerHTML = '';
+    // create title
+    const title = document.createElement('h2')
+    title.textContent = `Downloads`;
+    const description = document.createElement('p')
+    description.textContent = `Download now and enjoy! Uninstalling is always an option, but we think you’ll love it.`
+    document.querySelector('.download-links-container').appendChild(title);
+    document.querySelector('.download-links-container').appendChild(description);
     if (os === 'windows') {
         document.querySelector('.download-links-container').appendChild(windows_downloads_template(version));
     }
@@ -104,6 +111,10 @@ async function osSpecificDownloadButton() {
     else {
         document.querySelector('.download-links-container').append(windows_downloads_template(version), mac_downloads_template(version), linux_downloads_template(version))
     }
+    const all_downloads_link = document.createElement('a');
+    all_downloads_link.textContent = 'All Downloads';
+    all_downloads_link.href = 'downloads.html';
+    document.querySelector('.download-links-container').appendChild(all_downloads_link);
 }
 
 function getOS() {
