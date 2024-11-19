@@ -287,7 +287,7 @@ main {
     flex-direction: row;
 }
 
-#download a {
+#download .download-links a {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -300,23 +300,23 @@ main {
     flex-grow: 1;
 }
 
-#download a:hover {
+#download .download-links a:hover {
     background-color: white;
     cursor: pointer;
     color: var(--color-python-blue);
 }
 
-#download a:active {
+#download .download-links a:active {
     border: var(--border-width-large) inset white;
 }
 
-#download a:active + div > select {
+#download .download-links a:active + div > select {
     border: var(--border-width-large) inset white;
     border-left: none;
 
 }
 
-#download a:not(:only-child) {
+#download .download-links a:not(:only-child) {
     border-right: none;
 }
 
