@@ -1,7 +1,6 @@
 // Document Elements
 import {sort_data, process_data} from "./downloads_utils.js";
 import {get_all_download_files} from "./aws.js";
-import {onload_navbar} from "./navbar.js";
 
 var downloads_table;
 var os_input_container;
@@ -17,10 +16,6 @@ var sort_by_header = "name";
 var sort_by_direction = "asc";
 
 var data;
-
-window.onload = function() {
-  onload_navbar()
-}
 
 function date_format(td, date) {
   td.textContent = date.toLocaleDateString('en-GB')
@@ -104,11 +99,10 @@ const test_data = [
 ]
 
 var original_data;
-window.onload = async function () {
+window.addEventListener('load', async () => {
   // original_data = process_data(test_data)
   original_data = process_data(await get_all_download_files());
   console.log(original_data)
-  onload_navbar()
 
   // get elements
   downloads_table = document.getElementById("downloads-table")
@@ -141,7 +135,7 @@ window.onload = async function () {
   document.getElementById('search-bar').addEventListener('input', function () {
     change_search_query(this.value)
   });
-}
+});
 
 
 

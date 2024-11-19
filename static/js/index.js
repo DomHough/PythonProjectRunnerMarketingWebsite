@@ -1,13 +1,11 @@
-import { onload_navbar } from './navbar.js'
 import { s3Url } from './consts.js';
 import { get_latest_version_folder } from './aws.js';
 
 var version;
 
-window.onload = function() {
+window.addEventListener('load', () => {
     osSpecificDownloadButton()
-    onload_navbar()
-}
+});
 
 function windows_downloads_template(version) {
     const container = document.createElement('div');
