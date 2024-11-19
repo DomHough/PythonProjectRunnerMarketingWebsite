@@ -1,11 +1,11 @@
 var dropdown;
 var dropdown_button;
 
-export function onload_navbar() {
-  dropdown = document.querySelector('.navbar-links')
-  dropdown_button = document.querySelector('#navbar-dropdown-toggle')
-  dropdown_button.addEventListener('click', toggle_navbar_dropdown)
-}
+window.addEventListener('load', () => {
+  dropdown = document.querySelector('.navbar-links');
+  dropdown_button = document.querySelector('#navbar-dropdown-toggle');
+  dropdown_button.addEventListener('click', toggle_navbar_dropdown);
+})
 
 function toggle_navbar_dropdown() {
   console.log('test')
