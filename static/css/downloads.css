@@ -31,16 +31,20 @@ main > h1 {
 main > .control-bar {
     width: 75%;
     background-color: var(--color-python-blue);
-    border-radius: 100vh;
+    border-radius: 16px;
 }
 
 main > .control-bar > .control-bar-form {
-    padding: 4px;
+    padding: 8px;
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
+main > .control-bar > .control-bar-form > .left-side {
+    flex-direction: column;
+    gap: 4px;
+}
 main > .control-bar > .control-bar-form > .left-side, main > .control-bar > .control-bar-form > .right-side {
     width: 100%;
     display: flex;
@@ -85,12 +89,14 @@ label:has(input[type='radio']:checked) {
     height: 100%;
     align-items: stretch;
     justify-content: center;
+    width: 100%
 }
 .control-bar-form #search-bar {
     border: 2px solid white;
     border-radius: 50vh 0 0 50vh;
     color: rgba(255,255,255,0.75);
     padding-left: 8px;
+    width: 100%
 }
 
 .control-bar-form #search-button {
@@ -176,11 +182,17 @@ main > table * {
     display: none;
 }
 @media only screen and (min-width: 768px) {
+    main > .control-bar {
+        border-radius: 50vh;
+    }
+
     main > .control-bar > .control-bar-form {
         flex-direction: row !important;
+        padding: 4px;
     }
 
     main > .control-bar > .control-bar-form > .left-side {
+        flex-direction: row;
         justify-content: flex-start;
     }
 
@@ -190,5 +202,13 @@ main > table * {
 
     .mobile-hidden {
         display: table-cell;
+    }
+
+    .search-bar-input-container {
+        width: auto !important;
+    }
+
+    #search-bar {
+        width: auto !important;
     }
 }
