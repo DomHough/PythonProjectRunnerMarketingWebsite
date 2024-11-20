@@ -33,13 +33,13 @@ function link_format(td, link) {
 }
 
 const headers = [
-  {header: "Name", key: "name", format_func: null},
-  {header: "Operating System", key: "os"},
-  {header: "Architecture", key: "arch"},
-  {header: "Version", key: "version"},
-  {header: "Release Date", key: "date", format: date_format},
-  {header: "Size (mb)", key: "size", format: size_format},
-  {header: "Link", key: "link", format: link_format}
+  {header: "Name", key: "name", format_func: null, mobile_hidden: false},
+  {header: "Operating System", key: "os", mobile_hidden: true},
+  {header: "Architecture", key: "arch", mobile_hidden: true},
+  {header: "Version", key: "version", mobile_hidden: false},
+  {header: "Release Date", key: "date", format: date_format, mobile_hidden: false},
+  {header: "Size (mb)", key: "size", format: size_format, mobile_hidden: false},
+  {header: "Link", key: "link", format: link_format, mobile_hidden: false}
 ]
 
 const test_data = [
@@ -169,8 +169,10 @@ function render_table() {
       th.addEventListener('click', function () {
         change_sort_by(h)
       });
+      if (h.mobile_hidden) {
+        th.classList.add('mobile-hidden')
+      }
     }
-
   })
 
   const tbody = document.createElement('tbody')
@@ -182,12 +184,16 @@ function render_table() {
       const td = document.createElement('td')
       tr.appendChild(td)
       td.dataset.key = header.key
-        if (header.format) {
-            header.format(td, d[header.key])
-        }
-        else {
-            td.textContent = d[header.key]
-        }
+      if (header.format) {
+          header.format(td, d[header.key])
+      }
+      else {
+          td.textContent = d[header.key]
+      }
+
+      if (header.mobile_hidden) {
+        td.classList.add('mobile-hidden')
+      }
     })
   })
 }
