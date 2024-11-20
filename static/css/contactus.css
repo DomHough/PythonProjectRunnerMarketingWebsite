@@ -39,14 +39,7 @@ main {
     gap: 8px;
 }
 
-.card-header {
-    position: absolute;
-    border-radius: 32px 32px 0 0;
-    height: 32px;
-    width: 100%;
-    top: 0;
-    left: 0;
-}
+
 
 .contact-method-container {
     display: flex;
@@ -81,6 +74,15 @@ main {
 .contact-method-container > .logo-container > img {
     width: 100%;
     height: 100%;
+}
+
+.card-header {
+    position: absolute;
+    border-radius: 32px 32px 0 0;
+    height: 32px;
+    width: 100%;
+    top: 0;
+    left: 0;
 }
 
 .traditional-contact-container > .card-header {

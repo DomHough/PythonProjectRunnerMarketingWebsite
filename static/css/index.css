@@ -95,6 +95,7 @@ main {
 .app-img {
     border-radius: var(--border-radius-xl);
     width: 100%;
+    box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.25);
 }
 
 #hero-learn-more {
@@ -162,24 +163,43 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--color-python-blue);
-    border-radius: var(--border-radius-medium);
+    background-color: white;
+    border-radius: 25px;
     overflow: clip;
     position: relative;
     padding: 8px;
-    box-shadow: 0px 0px 8px 4px black;
+    box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.25);
     width: 250px;
     height: 250px;
+    gap: var(--spacing-small);
+    padding-top: 32px;
 }
 
-#features > .grid-container > .box > * {
-    margin: var(--spacing-small);
+#features > .grid-container > .box > h2 {
+    color: black;
 }
 
 #features > .grid-container > .box > img {
     width: 80%;
     height: 80%;
     border-radius: var(--border-radius-large);
+}
+
+.card-header {
+    position: absolute;
+    border-radius: 25px 25px 0 0;
+    height: 25px;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#features .box:nth-child(even) > .card-header {
+    background-color: var(--color-python-yellow);
+}
+
+#features .box:nth-child(odd) > .card-header {
+    background-color: var(--color-python-blue);
 }
 
 /* Icon Styling */
@@ -191,37 +211,9 @@ main {
 
 #features > .grid-container > .box > span {
     font-size: 8rem;
-    text-shadow: black 8px 16px;
+    text-shadow: 4px 8px 0px rgba(0,0,0,0.5);
+    color: var(--color-secondary);
 }
-
-
-.work-in-progress-stripe {
-    position: absolute;
-    width: calc(250px * sqrt(2));
-    border-radius: 100px;
-    height: 40px;
-    background:  repeating-linear-gradient(45deg, black, black 2%, var(--color-python-yellow) 2%, var(--color-python-yellow) 4%);
-}
-
-.stripe-1 {
-    transform: rotate(-45deg);
-    box-shadow: black 8px 8px 8px;
-}
-
-.stripe-2 {
-    transform: rotate(45deg);
-    box-shadow: black 8px 8px 8px;
-}
-
-.work-in-progress-text {
-    position: absolute;
-    transform: rotate(45deg);
-    width: 100%;
-    -webkit-text-stroke: 4px white;
-    color: black !important;
-    paint-order: stroke fill;
-}
-
 
 
 @media only screen and (min-width: 768px) {
@@ -251,7 +243,8 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: var(--border-radius-xl)
+    border-radius: var(--border-radius-xl);
+    box-shadow: 0px 4px 8px 4px rgba(0, 0, 0, 0.25);
 }
 
 #download > .download-links-container {
@@ -356,8 +349,6 @@ main {
     background-color: white;
     text-align-last: center;
 }
-
-
 
 @media only screen and (min-width: 768px) {
     #download {
