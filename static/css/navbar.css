@@ -61,6 +61,7 @@
 
 .navbar button {
     margin: 8px;
+    cursor: pointer;
 }
 
 /* Desktop Styling */
