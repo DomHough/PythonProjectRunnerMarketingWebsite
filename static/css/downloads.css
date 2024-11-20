@@ -31,25 +31,20 @@ main > h1 {
 main > .control-bar {
     width: 75%;
     background-color: var(--color-python-blue);
-    padding: 4px;
     border-radius: 100vh;
 }
 
 main > .control-bar > .control-bar-form {
+    padding: 4px;
     display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-main > .control-bar > .control-bar-form > .left-side {
+main > .control-bar > .control-bar-form > .left-side, main > .control-bar > .control-bar-form > .right-side {
     width: 100%;
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
-}
-
-main > .control-bar > .control-bar-form > .right-side {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 }
 
@@ -88,7 +83,7 @@ label:has(input[type='radio']:checked) {
     display: flex;
     flex-direction: row;
     height: 100%;
-    align-items: center;
+    align-items: stretch;
     justify-content: center;
 }
 .control-bar-form #search-bar {
@@ -96,7 +91,6 @@ label:has(input[type='radio']:checked) {
     border-radius: 50vh 0 0 50vh;
     color: rgba(255,255,255,0.75);
     padding-left: 8px;
-    height: 100%;
 }
 
 .control-bar-form #search-button {
@@ -109,7 +103,6 @@ label:has(input[type='radio']:checked) {
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    height: 100%;
     padding: 0 4px;
 }
 
@@ -177,4 +170,25 @@ main > table * {
     color: white;
     border-radius: 16px;
     font-size: 32px;
+}
+
+.mobile-hidden {
+    display: none;
+}
+@media only screen and (min-width: 768px) {
+    main > .control-bar > .control-bar-form {
+        flex-direction: row !important;
+    }
+
+    main > .control-bar > .control-bar-form > .left-side {
+        justify-content: flex-start;
+    }
+
+    main > .control-bar > .control-bar-form > .right-side {
+        justify-content: flex-end;
+    }
+
+    .mobile-hidden {
+        display: table-cell;
+    }
 }
