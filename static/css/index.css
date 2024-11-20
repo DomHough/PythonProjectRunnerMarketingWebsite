@@ -232,7 +232,11 @@ main {
 #download {
     display: flex;
     flex-direction: column;
-    background-color: var(--color-primary);
+    background-image: url("https://www.freewebheaders.com/wp-content/gallery/high-tech-hero-headers/hi-tech-concepts-on-blue-background-hero-header.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: right;
     align-items: center;
     justify-content: center;
     padding: var(--spacing-large) 0;
