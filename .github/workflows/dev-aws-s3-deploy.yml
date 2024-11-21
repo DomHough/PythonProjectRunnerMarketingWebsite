@@ -9,19 +9,15 @@ jobs:
   deploy:
     name: Deploy to AWS S3
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
-      S3_BUCKET_NAME: ${{ secrets.AWS_S3_DEV_BUCKET_NAME }}
     steps:
-      - name: Echo AWS S3 Bucket Name
-        run: echo $S3_BUCKET_NAME
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
       - name: Checkout
         uses: actions/checkout@v4
-      - name: S3 Deploy
-        uses: Reggionick/s3-deploy@v4.0.0
-        with:
-          folder: .
-          bucket: ${{ env.S3_BUCKET_NAME }}
-          bucket-region: ${{ secrets.AWS_REGION }}
-          delete-removed: true
+      - name: Deploy To S3
+        run: |
+          aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }}/ --delete
