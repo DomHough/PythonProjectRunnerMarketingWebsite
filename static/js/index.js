@@ -5,8 +5,23 @@ var version;
 
 window.addEventListener('load', () => {
     osSpecificDownloadButton()
+    // get questions
+    const qas = document.querySelectorAll('.faq-qa-container')
+    qas.forEach(qa => {
+        qa.querySelector('.faq-qa-title').addEventListener('click', () => toggle_faq_dropdown(qa))
+    })
 });
 
+function toggle_faq_dropdown(qa) {
+    if (qa.querySelector('.answer').classList.contains('hidden')) {
+        qa.querySelector('.answer').classList.remove('hidden')
+        qa.querySelector('span').textContent = 'keyboard_arrow_up'
+    }
+    else {
+        qa.querySelector('.answer').classList.add('hidden')
+        qa.querySelector('span').textContent = 'keyboard_arrow_down'
+    }
+}
 function windows_downloads_template(version) {
     const container = document.createElement('div');
     container.className = 'download-links';
